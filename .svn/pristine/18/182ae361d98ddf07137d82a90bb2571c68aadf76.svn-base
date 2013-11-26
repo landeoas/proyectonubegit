@@ -1,0 +1,134 @@
+
+package views.html.alumno
+
+import play.templates._
+import play.templates.TemplateMagic._
+
+import play.api.templates._
+import play.api.templates.PlayMagic._
+import models._
+import controllers._
+import java.lang._
+import java.util._
+import scala.collection.JavaConversions._
+import scala.collection.JavaConverters._
+import play.api.i18n._
+import play.core.j.PlayMagicForJava._
+import play.mvc._
+import play.data._
+import play.api.data.Field
+import play.mvc.Http.Context.Implicit._
+import views.html._
+/**/
+object edit_perfil extends BaseScalaTemplate[play.api.templates.Html,Format[play.api.templates.Html]](play.api.templates.HtmlFormat) with play.api.templates.Template2[Long,Form[Alumno],play.api.templates.Html] {
+
+    /**/
+    def apply/*1.2*/(id: Long, AF: Form[Alumno]):play.api.templates.Html = {
+        _display_ {import helper._
+
+implicit def /*5.2*/implicitFieldConstructor/*5.26*/ = {{ FieldConstructor(views.html.include.constructor_field_input.render) }};
+Seq[Any](format.raw/*1.30*/("""
+
+"""),format.raw/*4.1*/("""
+"""),format.raw/*5.99*/("""
+
+"""),_display_(Seq[Any](/*7.2*/main("Aula Virtual")/*7.22*/ {_display_(Seq[Any](format.raw/*7.24*/("""
+
+<h2> Editar Alumno </h2>
+
+"""),_display_(Seq[Any](/*11.2*/form(routes.AlumnoController.update_perfil(id))/*11.49*/ {_display_(Seq[Any](format.raw/*11.51*/("""
+	<fieldset>
+	"""),_display_(Seq[Any](/*13.3*/inputText(AF("codigo"), args = 'size -> 5,'readonly -> "readonly", '_label -> "Codigo:"))),format.raw/*13.91*/("""
+	"""),_display_(Seq[Any](/*14.3*/inputText(AF("nombres"), args = 'size -> 15,'_showConstraints -> false, '_label -> "Nombres:"))),format.raw/*14.97*/("""
+	"""),_display_(Seq[Any](/*15.3*/inputText(AF("apellidos"), args = 'size -> 15,'_showConstraints -> false, '_label -> "Apellidos:"))),format.raw/*15.101*/("""
+	"""),_display_(Seq[Any](/*16.3*/select(AF("genero"), 
+		options = options(
+			"Masculino"->"Masculino",
+			"Femenino"->"Femenino"
+			)
+		,'_showConstraints -> false, '_label -> "Genero:"		
+	))),format.raw/*22.3*/("""
+	"""),_display_(Seq[Any](/*23.3*/inputDate(AF("fecha"), args = 'size -> 15,'_showConstraints -> false, '_label -> "Fecha de Nacimiento"))),format.raw/*23.106*/("""
+	"""),_display_(Seq[Any](/*24.3*/inputText(AF("residencia"), args = 'size -> 30,'_showConstraints -> false, '_label -> "Residencia"))),format.raw/*24.102*/("""
+	"""),_display_(Seq[Any](/*25.3*/select(AF("Provincia"), 
+		options = options(
+			"Ancon"->"Ancon",
+			"Ate"->"Ate",
+			"Bre�a"->"Brena",
+			"Carabayllo"->"Carabayllo",
+			"Cercado de Lima"->"Cercado de Lima",
+			"Chaclacayo"->"Chaclacayo",
+			"Chorrillos"->"Chorrillos",
+			"Cieneguilla"->"Cieneguilla",
+			"Comas"->"Comas",
+			"El Agustino"->"El Agustino",
+			"Independencia"->"Independencia",
+			"Jesus Maria"->"Jesus Maria",
+			"La Molina"->"La Molina",
+			"La Victoria"->"La Victoria",
+			"Lince"->"Lince",
+			"Los Olivos"->"Los Olivos",
+			"Lurigancho-Chosica"->"Lurigancho-Chosica",
+			"Lurin"->"Lurin",
+			"Magdalena del Mar"->"Magdalena del Mar",
+			"Pueblo Libre"->"Pueblo Libre",
+			"Miraflores"->"Miraflores",
+			"Pachacamac"->"Pachacamac",
+			"Pucusana"->"Pucusana",
+			"Puente Piedra"->"Puente Piedra",
+			"Punta Hermosa"->"Punta Hermosa",
+			"Punta Negra"->"Punta Negra",
+			"Rimac"->"Rimac",
+			"San Bartolo"->"San Bartolo",
+			"San Borja"->"San Borja",
+			"San Isidro"->"San Isidro",
+			"San Juan de Lurigancho"->"San Juan de Lurigancho",
+			"San Juan de Miraflores"->"San Juan de Miraflores",
+			"San Luis"->"San Luis",
+			"San Martin de Porres"->"San Martin de Porres",
+			"San Miguel"->"San Miguel",
+			"Santa Anita"->"Santa Anita",
+			"Santa Maria del Mar"->"Santa Maria del Mar",
+			"Santa Rosa"->"Santa Rosa",
+			"Santiago de Surco"->"Santiago de Surco",
+			"Surquillo"->"Surquillo",
+			"Villa el Salvador"->"Villa el Salvador",
+			"Villa Maria del Triunfo"->"Villa Maria del Triunfo"
+		)
+		,'_showConstraints -> false, '_label -> "Provincia"
+	))),format.raw/*71.3*/("""
+	"""),_display_(Seq[Any](/*72.3*/inputRadioGroup(AF("escuela"), options = options("Sistemas"->"E.A.P Sistemas","Software"->"E.A.P Software"),'_showConstraints -> false, '_label -> "Escuela Academico Profesional:"))),format.raw/*72.183*/("""
+	"""),_display_(Seq[Any](/*73.3*/inputText(AF("user"), args = 'size -> 15,'_showConstraints -> false, '_label -> "Cuenta de Usuario:"))),format.raw/*73.104*/("""
+	<!--"""),_display_(Seq[Any](/*74.7*/inputPassword(AF("password"), args = 'size -> 15,'_showConstraints -> false, '_label -> "Clave de Usuario:"))),format.raw/*74.115*/("""-->
+	"""),_display_(Seq[Any](/*75.3*/inputText(AF("Email"), args = 'size -> 25,'_showConstraints -> false, '_label -> "Correo Electronico:"))),format.raw/*75.106*/("""
+	</fieldset>
+
+    <input type="submit" value="Guardar">
+	"""),_display_(Seq[Any](/*79.3*/if(session.get("user") == "Admin")/*79.37*/{_display_(Seq[Any](format.raw/*79.38*/(""" 
+		<a href=""""),_display_(Seq[Any](/*80.13*/routes/*80.19*/.ProfesorController.index)),format.raw/*80.44*/(""""> <input type="button" value="Cancelar"> </a>
+	""")))}/*81.3*/else/*81.7*/{_display_(Seq[Any](format.raw/*81.8*/("""
+		<a href=""""),_display_(Seq[Any](/*82.13*/routes/*82.19*/.Home.inicio_alumno())),format.raw/*82.40*/(""""><input type ="button" value="Cancelar"> </a>
+	""")))})),format.raw/*83.3*/("""
+""")))})),format.raw/*84.2*/("""
+    
+""")))})),format.raw/*86.2*/("""
+"""))}
+    }
+    
+    def render(id:Long,AF:Form[Alumno]): play.api.templates.Html = apply(id,AF)
+    
+    def f:((Long,Form[Alumno]) => play.api.templates.Html) = (id,AF) => apply(id,AF)
+    
+    def ref: this.type = this
+
+}
+                /*
+                    -- GENERATED --
+                    DATE: Fri Nov 22 22:48:29 COT 2013
+                    SOURCE: C:/wwww/tuto/branches/HERNAN/app/views/alumno/edit_perfil.scala.html
+                    HASH: 3eb7a6f9fedf86ca9c90a3aea94eda512a69a536
+                    MATRIX: 747->1|860->50|892->74|997->29|1025->48|1053->147|1090->150|1118->170|1157->172|1221->201|1277->248|1317->250|1367->265|1477->353|1515->356|1631->450|1669->453|1790->551|1828->554|2008->713|2046->716|2172->819|2210->822|2332->921|2370->924|3926->2459|3964->2462|4167->2642|4205->2645|4329->2746|4371->2753|4502->2861|4543->2867|4669->2970|4763->3029|4806->3063|4845->3064|4895->3078|4910->3084|4957->3109|5024->3158|5036->3162|5074->3163|5123->3176|5138->3182|5181->3203|5261->3252|5294->3254|5332->3261
+                    LINES: 26->1|29->5|29->5|30->1|32->4|33->5|35->7|35->7|35->7|39->11|39->11|39->11|41->13|41->13|42->14|42->14|43->15|43->15|44->16|50->22|51->23|51->23|52->24|52->24|53->25|99->71|100->72|100->72|101->73|101->73|102->74|102->74|103->75|103->75|107->79|107->79|107->79|108->80|108->80|108->80|109->81|109->81|109->81|110->82|110->82|110->82|111->83|112->84|114->86
+                    -- GENERATED --
+                */
+            

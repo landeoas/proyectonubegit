@@ -1,0 +1,73 @@
+
+package views.html.profesor
+
+import play.templates._
+import play.templates.TemplateMagic._
+
+import play.api.templates._
+import play.api.templates.PlayMagic._
+import models._
+import controllers._
+import java.lang._
+import java.util._
+import scala.collection.JavaConversions._
+import scala.collection.JavaConverters._
+import play.api.i18n._
+import play.core.j.PlayMagicForJava._
+import play.mvc._
+import play.data._
+import play.api.data.Field
+import play.mvc.Http.Context.Implicit._
+import views.html._
+/**/
+object create extends BaseScalaTemplate[play.api.templates.Html,Format[play.api.templates.Html]](play.api.templates.HtmlFormat) with play.api.templates.Template1[Form[Profesor],play.api.templates.Html] {
+
+    /**/
+    def apply/*1.2*/(formulario: Form[Profesor]):play.api.templates.Html = {
+        _display_ {import helper._
+
+implicit def /*5.2*/implicitFieldConstructor/*5.26*/ = {{ FieldConstructor(views.html.include.constructor_field_input.render) }};
+Seq[Any](format.raw/*1.30*/("""
+
+"""),format.raw/*4.1*/("""
+"""),format.raw/*5.99*/("""
+
+"""),_display_(Seq[Any](/*7.2*/main("Aula Virtual")/*7.22*/ {_display_(Seq[Any](format.raw/*7.24*/("""
+
+<h2> Nuevo Profesor  </h2>
+
+"""),_display_(Seq[Any](/*11.2*/form(routes.ProfesorController.save())/*11.40*/ {_display_(Seq[Any](format.raw/*11.42*/("""
+	<fieldset>
+		"""),_display_(Seq[Any](/*13.4*/inputText(formulario("dni"),'_showConstraints -> false,     '_label -> "DNI:"))),format.raw/*13.82*/("""
+		"""),_display_(Seq[Any](/*14.4*/inputText(formulario("nombres"),'_showConstraints -> false,    '_label -> "Nombres:"))),format.raw/*14.89*/("""
+		"""),_display_(Seq[Any](/*15.4*/inputText(formulario("apellidos"),'_showConstraints -> false, '_label -> "Apellidos:"))),format.raw/*15.90*/("""
+		"""),_display_(Seq[Any](/*16.4*/inputDate(formulario("fecha"),'_showConstraints -> false,    '_label -> "Fecha Nacimiento:"))),format.raw/*16.96*/("""
+		"""),_display_(Seq[Any](/*17.4*/inputText(formulario("email"),'_showConstraints -> false,    '_label -> "eMail:"))),format.raw/*17.85*/("""
+		"""),_display_(Seq[Any](/*18.4*/inputText(formulario("user"),'_showConstraints -> false,    '_label -> "Cuenta de Usuario:"))),format.raw/*18.96*/("""
+		"""),_display_(Seq[Any](/*19.4*/inputPassword(formulario("password"),'_showConstraints -> false,    '_label -> "Clave de Usuario:"))),format.raw/*19.103*/("""
+	</fieldset>
+    
+    <input type="submit" value="Crear"> -
+	<a href=""""),_display_(Seq[Any](/*23.12*/routes/*23.18*/.ProfesorController.index)),format.raw/*23.43*/(""""> <input type="button" value="Cancelar"> </a>
+""")))})),format.raw/*24.2*/("""
+    
+""")))})))}
+    }
+    
+    def render(formulario:Form[Profesor]): play.api.templates.Html = apply(formulario)
+    
+    def f:((Form[Profesor]) => play.api.templates.Html) = (formulario) => apply(formulario)
+    
+    def ref: this.type = this
+
+}
+                /*
+                    -- GENERATED --
+                    DATE: Fri Nov 22 22:48:29 COT 2013
+                    SOURCE: C:/wwww/tuto/branches/HERNAN/app/views/profesor/create.scala.html
+                    HASH: 590869a90698cc5e2987ae04b449ba9957318d13
+                    MATRIX: 741->1|854->50|886->74|991->29|1019->48|1047->147|1084->150|1112->170|1151->172|1217->203|1264->241|1304->243|1355->259|1455->337|1494->341|1601->426|1640->430|1748->516|1787->520|1901->612|1940->616|2043->697|2082->701|2196->793|2235->797|2357->896|2465->968|2480->974|2527->999|2606->1047
+                    LINES: 26->1|29->5|29->5|30->1|32->4|33->5|35->7|35->7|35->7|39->11|39->11|39->11|41->13|41->13|42->14|42->14|43->15|43->15|44->16|44->16|45->17|45->17|46->18|46->18|47->19|47->19|51->23|51->23|51->23|52->24
+                    -- GENERATED --
+                */
+            

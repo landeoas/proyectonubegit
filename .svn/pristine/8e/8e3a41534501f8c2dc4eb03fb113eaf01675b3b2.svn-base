@@ -1,0 +1,29 @@
+@(formulario: Form[Login])
+
+@import helper._
+
+@implicitFieldConstructor=@{ FieldConstructor(views.html.include.constructor_field_input.render) }
+
+@main("Aula Virtual") {
+
+<h2> <image src="@routes.Assets.at("/public/images","llave.png")"> Ingreso al Sistema </h2>
+
+@if(flash.containsKey("invalid")) {
+	<h4 style="color: red">
+		@flash.get("invalid")
+	</h4>
+}
+
+@form(routes.Home.ingresar()) {
+	<fieldset>
+		@inputText(formulario("login"),'_showConstraints -> false,'_label ->"Usuario:")
+		@inputPassword(formulario("clave"),'_showConstraints -> false,'_label ->"Clave:")
+	</fieldset>
+    
+    <button class= "btn">Ingresar</button>
+    
+	
+}
+<a href="@routes.AlumnoController.create"><button class= "btn">Registrarse Si es Nuevo</button></a>
+    
+}

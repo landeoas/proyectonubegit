@@ -1,0 +1,46 @@
+@(lista: List[Curso])
+
+@import helper._
+
+
+@main("Cursos") {
+    
+<h2> <image src="@routes.Assets.at("/public/images","menu.png")"> Lista de cursos </h2>
+
+@if(flash.containsKey("success")) {
+	<h3 style="color: green">
+		<image src="@routes.Assets.at("/public/images","ok.gif")">
+		@flash.get("success")
+	</h3>
+} 
+
+<table class="table table-bordered">
+	<tr >
+		<th>Id</th>
+		<th>Nombre</th>
+		<th>Ciclo</th>
+		<th>Creditos</th>
+		<th>Profesor</th>
+		<th>Creado</th>
+		<th>Modificado</th>
+		<th>Accion</th>
+	</tr>
+
+	@for(Curso <- lista) {
+	<tr >
+		<td>@Curso.id</td>
+		<td>@Curso.name</td>
+		<td>@Curso.ciclo</td>
+		<td>@Curso.creditos</td>
+		<td>@Curso.profesor.nombres @Curso.profesor.apellidos</td>
+		<td>@Curso.created.format("dd/MM/yyyy")</td>
+		<td>@Curso.updated.format("dd/MM/yyyy")</td>
+		<td><a href=""> <input type="button" value="Unirse"> </a></td>
+		
+		
+	</tr>
+	}
+</table>
+
+<a href="@routes.AlumnoController.buscar_curso"> <input type="button" value="Buscar Grupo"> </a>
+}

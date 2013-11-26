@@ -1,0 +1,26 @@
+@(noticias: List[Noticia])
+
+@main("AULA VIRTUAL FISI") {
+
+<h2 class="text-center"> <strong>NOTICIAS</strong> </h2>
+
+<ul class="thumbnails" >
+    @for(noticia <- noticias) {
+              <li class="span8">
+                <div class="thumbnail">
+                  <img src=@routes.Assets.at("public","images/"+noticia.imagen) alt="">
+                  <div class="caption">
+                    <h2>@noticia.titulo</h2>
+                    <h3>Dirigido a la @noticia.escuela</h3><h4>Fecha de Publicacion:  @noticia.created.format("dd-MM-yyyy")</h4>
+                    <p>@noticia.contenido</p>
+                  </div>
+                </div>
+              </li>
+    }
+</ul>
+
+<p class="text-center">
+<h3>Visite http://sistemas.edu.pe</h3>
+</p>
+
+}

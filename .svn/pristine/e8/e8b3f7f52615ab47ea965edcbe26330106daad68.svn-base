@@ -1,0 +1,93 @@
+
+package views.html.curso
+
+import play.templates._
+import play.templates.TemplateMagic._
+
+import play.api.templates._
+import play.api.templates.PlayMagic._
+import models._
+import controllers._
+import java.lang._
+import java.util._
+import scala.collection.JavaConversions._
+import scala.collection.JavaConverters._
+import play.api.i18n._
+import play.core.j.PlayMagicForJava._
+import play.mvc._
+import play.data._
+import play.api.data.Field
+import play.mvc.Http.Context.Implicit._
+import views.html._
+/**/
+object listaCursos extends BaseScalaTemplate[play.api.templates.Html,Format[play.api.templates.Html]](play.api.templates.HtmlFormat) with play.api.templates.Template1[List[Curso],play.api.templates.Html] {
+
+    /**/
+    def apply/*1.2*/(lista: List[Curso]):play.api.templates.Html = {
+        _display_ {import helper._
+
+
+Seq[Any](format.raw/*1.22*/("""
+
+"""),format.raw/*4.1*/("""
+
+"""),_display_(Seq[Any](/*6.2*/main("Cursos")/*6.16*/ {_display_(Seq[Any](format.raw/*6.18*/("""
+    
+<h2> <image src=""""),_display_(Seq[Any](/*8.19*/routes/*8.25*/.Assets.at("/public/images","menu.png"))),format.raw/*8.64*/(""""> Lista de cursos </h2>
+
+"""),_display_(Seq[Any](/*10.2*/if(flash.containsKey("success"))/*10.34*/ {_display_(Seq[Any](format.raw/*10.36*/("""
+	<h3 style="color: green">
+		<image src=""""),_display_(Seq[Any](/*12.16*/routes/*12.22*/.Assets.at("/public/images","ok.gif"))),format.raw/*12.59*/("""">
+		"""),_display_(Seq[Any](/*13.4*/flash/*13.9*/.get("success"))),format.raw/*13.24*/("""
+	</h3>
+""")))})),format.raw/*15.2*/(""" 
+
+<table class="table table-bordered">
+	<tr >
+		<th>Id</th>
+		<th>Nombre</th>
+		<th>Ciclo</th>
+		<th>Creditos</th>
+		<th>Profesor</th>
+		<th>Creado</th>
+		<th>Modificado</th>
+		<th>Accion</th>
+	</tr>
+
+	"""),_display_(Seq[Any](/*29.3*/for(Curso <- lista) yield /*29.22*/ {_display_(Seq[Any](format.raw/*29.24*/("""
+	<tr >
+		<td>"""),_display_(Seq[Any](/*31.8*/Curso/*31.13*/.id)),format.raw/*31.16*/("""</td>
+		<td>"""),_display_(Seq[Any](/*32.8*/Curso/*32.13*/.name)),format.raw/*32.18*/("""</td>
+		<td>"""),_display_(Seq[Any](/*33.8*/Curso/*33.13*/.ciclo)),format.raw/*33.19*/("""</td>
+		<td>"""),_display_(Seq[Any](/*34.8*/Curso/*34.13*/.creditos)),format.raw/*34.22*/("""</td>
+		<td>"""),_display_(Seq[Any](/*35.8*/Curso/*35.13*/.profesor.nombres)),format.raw/*35.30*/(""" """),_display_(Seq[Any](/*35.32*/Curso/*35.37*/.profesor.apellidos)),format.raw/*35.56*/("""</td>
+		<td>"""),_display_(Seq[Any](/*36.8*/Curso/*36.13*/.created.format("dd/MM/yyyy"))),format.raw/*36.42*/("""</td>
+		<td>"""),_display_(Seq[Any](/*37.8*/Curso/*37.13*/.updated.format("dd/MM/yyyy"))),format.raw/*37.42*/("""</td>
+		<td><a href=""> <input type="button" value="Unirse"> </a></td>
+		
+		
+	</tr>
+	""")))})),format.raw/*42.3*/("""
+</table>
+
+<a href=""""),_display_(Seq[Any](/*45.11*/routes/*45.17*/.AlumnoController.buscar_curso)),format.raw/*45.47*/(""""> <input type="button" value="Buscar Grupo"> </a>
+""")))})))}
+    }
+    
+    def render(lista:List[Curso]): play.api.templates.Html = apply(lista)
+    
+    def f:((List[Curso]) => play.api.templates.Html) = (lista) => apply(lista)
+    
+    def ref: this.type = this
+
+}
+                /*
+                    -- GENERATED --
+                    DATE: Sun Nov 24 13:10:59 COT 2013
+                    SOURCE: C:/wwww/tuto/branches/HERNAN/app/views/curso/listaCursos.scala.html
+                    HASH: 5943a998e5c0370a3a90edfa2d7f3ee9f28063be
+                    MATRIX: 740->1|854->21|884->43|923->48|945->62|984->64|1045->90|1059->96|1119->135|1183->164|1224->196|1264->198|1345->243|1360->249|1419->286|1461->293|1474->298|1511->313|1553->324|1806->542|1841->561|1881->563|1933->580|1947->585|1972->588|2021->602|2035->607|2062->612|2111->626|2125->631|2153->637|2202->651|2216->656|2247->665|2296->679|2310->684|2349->701|2387->703|2401->708|2442->727|2491->741|2505->746|2556->775|2605->789|2619->794|2670->823|2792->914|2852->938|2867->944|2919->974
+                    LINES: 26->1|30->1|32->4|34->6|34->6|34->6|36->8|36->8|36->8|38->10|38->10|38->10|40->12|40->12|40->12|41->13|41->13|41->13|43->15|57->29|57->29|57->29|59->31|59->31|59->31|60->32|60->32|60->32|61->33|61->33|61->33|62->34|62->34|62->34|63->35|63->35|63->35|63->35|63->35|63->35|64->36|64->36|64->36|65->37|65->37|65->37|70->42|73->45|73->45|73->45
+                    -- GENERATED --
+                */
+            

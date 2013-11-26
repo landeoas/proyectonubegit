@@ -1,0 +1,71 @@
+@(title: String)(content: Html)
+
+@import views.html.include._
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PROYECTO</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="@routes.Assets.at("/public","stylesheets/bootstrap.css")">
+        <link href="@routes.Assets.at("/public","stylesheets/bootstrap-responsive.css")" rel="stylesheet">
+</head>
+
+<body>
+
+<div class='container-fluid'>
+        <header class="hero-unit">
+                <h1 class="fill">
+                    UNMSM &mdash; FISI AULA VIRTUAL
+                    <img src="@routes.Assets.at("/public/images","logofisi.jpg")">
+                </h1>
+        </header>
+        <hr></hr>
+        <div class="row">
+            <div class="span10"></div>
+            <div class='span1'>
+                    <a href="@routes.Home.welcome" class="btn btn-small btn-primary disabled">Bienvenido</a>
+                   
+            </div>
+            <div class="span1">
+                <a href="@routes.Home.acerca_de" class="btn btn-small btn-primary disabled">Noticias</a>
+            </div>
+        </div>
+        <hr></hr>
+        <div class="row">
+            <div class='span3'>
+                <ul class="nav nav-list">
+                    <li class="nav-header"><h3>Opciones</h3></li>
+                    @tag_menu_usr()
+                    <br />
+                </ul>
+            </div>
+
+            <div class='span9'>
+                <div> @content </div>
+            </div>
+        </div>
+</div>
+<hr></hr>
+<div class="row">
+        <div class="span2"></div>
+        <div class='span7'>
+            @tag_pie()
+        </div>
+
+        <div class='span3'>
+            <img src="@routes.Assets.at("/public/images","favicon2.png")"> 
+        </div>
+</div>
+
+</div>
+
+    <script src="@routes.Assets.at("/public","javascripts/jquery.js")"></script>
+    <!--<script src="@routes.Assets.at("/public","javascripts/bootstrap.js")"></script>-->
+    <script src="@routes.Assets.at("/public","javascripts/bootstrap-tab.js")"></script>
+    <script src="@routes.Assets.at("/public","javascripts/bootstrap-button.js")"></script>
+</body>
+
+</html>

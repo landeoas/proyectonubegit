@@ -1,0 +1,24 @@
+@(id: Long, formulario: Form[Profesor])
+
+@import helper._
+
+@implicitFieldConstructor=@{ FieldConstructor(views.html.include.constructor_field_input.render) }
+
+@main("Aula Virtual") {
+
+<h2> Editar Profesor </h2>
+
+@form(routes.ProfesorController.update(id)) {
+	<fieldset>
+		@inputText(formulario("dni"),'_showConstraints -> false, '_label -> "DNI :")
+		@inputText(formulario("nombres"),'_showConstraints -> false, '_label -> "Nombres :")
+        @inputText(formulario("apellidos"),'_showConstraints -> false, '_label -> "Apellidos :")
+        @inputDate(formulario("fecha"),'_showConstraints -> false, '_label -> "Fecha Nacimiento :")
+        @inputText(formulario("email"),'_showConstraints -> false, '_label -> "Email :")
+	</fieldset>
+
+    <input type="submit" value="Guardar"> -
+	<a href="@routes.ProfesorController.index"> <input type="button" value="Cancelar"> </a>
+}
+    
+}

@@ -1,0 +1,92 @@
+
+package views.html.profesor
+
+import play.templates._
+import play.templates.TemplateMagic._
+
+import play.api.templates._
+import play.api.templates.PlayMagic._
+import models._
+import controllers._
+import java.lang._
+import java.util._
+import scala.collection.JavaConversions._
+import scala.collection.JavaConverters._
+import play.api.i18n._
+import play.core.j.PlayMagicForJava._
+import play.mvc._
+import play.data._
+import play.api.data.Field
+import play.mvc.Http.Context.Implicit._
+import views.html._
+/**/
+object gestion_curso extends BaseScalaTemplate[play.api.templates.Html,Format[play.api.templates.Html]](play.api.templates.HtmlFormat) with play.api.templates.Template2[Curso,List[Clase],play.api.templates.Html] {
+
+    /**/
+    def apply/*2.2*/(curso: Curso,clases : List[Clase]):play.api.templates.Html = {
+        _display_ {import helper._
+
+implicit def /*6.2*/implicitFieldConstructor/*6.26*/ = {{ FieldConstructor(views.html.include.constructor_field_input.render) }};
+Seq[Any](format.raw/*2.37*/("""
+
+"""),format.raw/*5.1*/("""
+"""),format.raw/*6.99*/("""
+
+"""),_display_(Seq[Any](/*8.2*/main("AULA VIRTUAL FISI")/*8.27*/ {_display_(Seq[Any](format.raw/*8.29*/("""
+	<h1>"""),_display_(Seq[Any](/*9.7*/curso/*9.12*/.name)),format.raw/*9.17*/("""</h1>
+	<h2>Clases</h2>
+	
+	<a href=""""),_display_(Seq[Any](/*12.12*/routes/*12.18*/.ProfesorController.create_clase(curso.id))),format.raw/*12.60*/(""""><input type="button" value="Nueva Clase"></a>
+	
+	<table class="table table-bordered">
+		<tr>
+			<th>Titulo</th>
+			<th>Descripcion</th>
+			<th>Fecha de publicacion</th>
+			"""),format.raw/*19.22*/("""
+			"""),_display_(Seq[Any](/*20.5*/if(session.get("user")== "Admin")/*20.38*/{_display_(Seq[Any](format.raw/*20.39*/("""
+				<td>Profesor</td>
+			""")))}/*22.5*/else/*22.9*/{_display_(Seq[Any](format.raw/*22.10*/("""
+				<th>Acciones</th>
+			""")))})),format.raw/*24.5*/("""
+		</tr>
+
+		"""),_display_(Seq[Any](/*27.4*/for(clase <- clases) yield /*27.24*/ {_display_(Seq[Any](format.raw/*27.26*/("""
+		<tr>
+			<td>"""),_display_(Seq[Any](/*29.9*/clase/*29.14*/.titulo)),format.raw/*29.21*/("""</td>
+			<td>"""),_display_(Seq[Any](/*30.9*/clase/*30.14*/.descripcion)),format.raw/*30.26*/("""</td>
+			<td>"""),_display_(Seq[Any](/*31.9*/clase/*31.14*/.updated)),format.raw/*31.22*/("""</td>
+			"""),_display_(Seq[Any](/*32.5*/if(session.get("user")== "Admin")/*32.38*/{_display_(Seq[Any](format.raw/*32.39*/("""
+				<td>"""),_display_(Seq[Any](/*33.10*/curso/*33.15*/.profesor)),format.raw/*33.24*/("""</td>
+			""")))})),format.raw/*34.5*/("""
+			<td><a href=""""),_display_(Seq[Any](/*35.18*/routes/*35.24*/.ProfesorController.download_clase(clase.id))),format.raw/*35.68*/(""""><input type="button" value="Descargar"></a>
+			"""),_display_(Seq[Any](/*36.5*/if(session.get("tipoU")=="Profesor")/*36.41*/{_display_(Seq[Any](format.raw/*36.42*/("""
+				<td><a href=""""),_display_(Seq[Any](/*37.19*/routes/*37.25*/.ProfesorController.edit_clase(clase.id))),format.raw/*37.65*/(""""><input type="button" value="Modificar"></a>
+				<td><a href=""""),_display_(Seq[Any](/*38.19*/routes/*38.25*/.ProfesorController.delete_clase(clase.id))),format.raw/*38.67*/(""""><input type="button" value="Eliminar"></a>
+			""")))})),format.raw/*39.5*/("""
+			
+		</tr>
+		""")))})),format.raw/*42.4*/("""
+	</table>
+	
+
+""")))})))}
+    }
+    
+    def render(curso:Curso,clases:List[Clase]): play.api.templates.Html = apply(curso,clases)
+    
+    def f:((Curso,List[Clase]) => play.api.templates.Html) = (curso,clases) => apply(curso,clases)
+    
+    def ref: this.type = this
+
+}
+                /*
+                    -- GENERATED --
+                    DATE: Fri Nov 22 22:48:29 COT 2013
+                    SOURCE: C:/wwww/tuto/branches/HERNAN/app/views/profesor/gestion_curso.scala.html
+                    HASH: 8bf400094708344f72b4abd1cbf9b3d0afb0a923
+                    MATRIX: 751->3|872->63|904->87|1009->38|1039->60|1068->160|1107->165|1140->190|1179->192|1221->200|1234->205|1260->210|1335->249|1350->255|1414->297|1623->496|1664->502|1706->535|1745->536|1792->565|1804->569|1843->570|1903->599|1954->615|1990->635|2030->637|2083->655|2097->660|2126->667|2176->682|2190->687|2224->699|2274->714|2288->719|2318->727|2364->738|2406->771|2445->772|2492->783|2506->788|2537->797|2579->808|2634->827|2649->833|2715->877|2801->928|2846->964|2885->965|2941->985|2956->991|3018->1031|3119->1096|3134->1102|3198->1144|3279->1194|3329->1213
+                    LINES: 26->2|29->6|29->6|30->2|32->5|33->6|35->8|35->8|35->8|36->9|36->9|36->9|39->12|39->12|39->12|46->19|47->20|47->20|47->20|49->22|49->22|49->22|51->24|54->27|54->27|54->27|56->29|56->29|56->29|57->30|57->30|57->30|58->31|58->31|58->31|59->32|59->32|59->32|60->33|60->33|60->33|61->34|62->35|62->35|62->35|63->36|63->36|63->36|64->37|64->37|64->37|65->38|65->38|65->38|66->39|69->42
+                    -- GENERATED --
+                */
+            

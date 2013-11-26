@@ -1,0 +1,51 @@
+@(lista: List[Noticia])
+
+@import helper._
+
+
+@main("Control Acceso Usuarios") {
+    
+<h2> <image src="@routes.Assets.at("/public/images","menu.png")"> Publicar Noticia </h2>
+
+@if(flash.containsKey("success")) {
+	<h3 style="color: green">
+		<image src="@routes.Assets.at("/public/images","ok.gif")">
+		@flash.get("success")
+	</h3>
+} 
+
+<table class="table table-bordered">
+	<tr >
+		<th>ID</th>
+		<th>Titulo</th>
+		<th>Contenido</th>
+		<th>imagen</th>
+		<th>escuela</th>
+		<th>Creado</th>
+		<th>Modificado</th>
+		<th></th>
+		<th></th>
+	</tr>
+
+	@for(registro <- lista) {
+	<tr >
+		<td>@registro.id</td>
+		<td>@registro.titulo</td>
+		<td>@registro.contenido</td>
+		<td>@registro.imagen</td>
+		<td>@registro.escuela</td>
+		<td>@registro.created.format("dd/MM/yyyy - hh:mm")</td>
+		<td>@registro.updated.format("dd/MM/yyyy - hh:mm")</td>
+		<td><a href="@routes.Administrador.edit(registro.id)"> <input type="button" value="Editar"> </a></td>
+		<td>
+			@form(routes.Administrador.delete(registro.id)) {
+				<input type="submit" value="Eliminar">
+			}
+		</td>
+	</tr>
+	}
+</table>
+
+<a href="@routes.Administrador.create()"> <input type="button" value="Crear"> </a>
+
+}

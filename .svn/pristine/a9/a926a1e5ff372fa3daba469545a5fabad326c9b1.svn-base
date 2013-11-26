@@ -1,0 +1,70 @@
+
+package views.html.alumno
+
+import play.templates._
+import play.templates.TemplateMagic._
+
+import play.api.templates._
+import play.api.templates.PlayMagic._
+import models._
+import controllers._
+import java.lang._
+import java.util._
+import scala.collection.JavaConversions._
+import scala.collection.JavaConverters._
+import play.api.i18n._
+import play.core.j.PlayMagicForJava._
+import play.mvc._
+import play.data._
+import play.api.data.Field
+import play.mvc.Http.Context.Implicit._
+import views.html._
+/**/
+object edit_password extends BaseScalaTemplate[play.api.templates.Html,Format[play.api.templates.Html]](play.api.templates.HtmlFormat) with play.api.templates.Template2[Long,Form[Login],play.api.templates.Html] {
+
+    /**/
+    def apply/*1.2*/(id: Long, Log: Form[Login]):play.api.templates.Html = {
+        _display_ {import helper._
+
+implicit def /*5.2*/implicitFieldConstructor/*5.26*/ = {{ FieldConstructor(views.html.include.constructor_field_input.render) }};
+Seq[Any](format.raw/*1.30*/("""
+
+"""),format.raw/*4.1*/("""
+"""),format.raw/*5.99*/("""
+
+"""),_display_(Seq[Any](/*7.2*/main("Aula Virtual")/*7.22*/ {_display_(Seq[Any](format.raw/*7.24*/("""
+
+	<h2> Editar Clave de Acceso </h2>
+
+	"""),_display_(Seq[Any](/*11.3*/form(routes.AlumnoController.update_password(id))/*11.52*/ {_display_(Seq[Any](format.raw/*11.54*/("""
+		"""),_display_(Seq[Any](/*12.4*/inputPassword(Log("clave_act"), args = 'size -> 15,'_showConstraints -> false, '_label -> "Clave Actual:"))),format.raw/*12.110*/("""
+		"""),_display_(Seq[Any](/*13.4*/inputPassword(Log("clave_new"), args = 'size -> 15,'_showConstraints -> false, '_label -> "Nueva Clave de Usuario:"))),format.raw/*13.120*/("""
+		"""),_display_(Seq[Any](/*14.4*/inputPassword(Log("clave_rep"), args = 'size -> 15,'_showConstraints -> false, '_label -> "Confirmar Nueva Clave:"))),format.raw/*14.119*/("""
+		<input type="submit" value="Guardar">
+		
+		"""),_display_(Seq[Any](/*17.4*/if(session.get("user") == "Admin")/*17.38*/{_display_(Seq[Any](format.raw/*17.39*/(""" 
+			<a href=""""),_display_(Seq[Any](/*18.14*/routes/*18.20*/.ProfesorController.index)),format.raw/*18.45*/(""""> <input type="button" value="Cancelar"> </a>
+		""")))}/*19.4*/else/*19.8*/{_display_(Seq[Any](format.raw/*19.9*/("""
+			<a href=""""),_display_(Seq[Any](/*20.14*/routes/*20.20*/.Home.inicio_alumno())),format.raw/*20.41*/(""""><input type ="button" value="Cancelar"> </a>
+		""")))})),format.raw/*21.4*/("""
+	""")))})),format.raw/*22.3*/("""
+""")))})))}
+    }
+    
+    def render(id:Long,Log:Form[Login]): play.api.templates.Html = apply(id,Log)
+    
+    def f:((Long,Form[Login]) => play.api.templates.Html) = (id,Log) => apply(id,Log)
+    
+    def ref: this.type = this
+
+}
+                /*
+                    -- GENERATED --
+                    DATE: Fri Nov 22 22:48:29 COT 2013
+                    SOURCE: C:/wwww/tuto/branches/HERNAN/app/views/alumno/edit_password.scala.html
+                    HASH: 09b74f485566b727da8f5f533b440e39151d52ae
+                    MATRIX: 748->1|862->54|894->78|999->29|1029->51|1058->151|1097->156|1125->176|1164->178|1243->222|1301->271|1341->273|1381->278|1510->384|1550->389|1689->505|1729->510|1867->625|1952->675|1995->709|2034->710|2086->726|2101->732|2148->757|2217->808|2229->812|2267->813|2318->828|2333->834|2376->855|2458->906|2493->910
+                    LINES: 26->1|29->5|29->5|30->1|32->4|33->5|35->7|35->7|35->7|39->11|39->11|39->11|40->12|40->12|41->13|41->13|42->14|42->14|45->17|45->17|45->17|46->18|46->18|46->18|47->19|47->19|47->19|48->20|48->20|48->20|49->21|50->22
+                    -- GENERATED --
+                */
+            

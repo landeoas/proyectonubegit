@@ -1,0 +1,1545 @@
+// @SOURCE:C:/wwww/tuto/branches/HERNAN/conf/routes
+// @HASH:4990e36fc3942ca11578f89029de24582c3c7716
+// @DATE:Sun Nov 24 13:10:58 COT 2013
+
+import Routes.{prefix => _prefix, defaultPrefix => _defaultPrefix}
+import play.core._
+import play.core.Router._
+import play.core.j._
+
+import play.api.mvc._
+import play.libs.F
+
+import Router.queryString
+
+
+// @LINE:65
+// @LINE:64
+// @LINE:63
+// @LINE:59
+// @LINE:58
+// @LINE:57
+// @LINE:56
+// @LINE:55
+// @LINE:54
+// @LINE:53
+// @LINE:52
+// @LINE:51
+// @LINE:50
+// @LINE:49
+// @LINE:48
+// @LINE:47
+// @LINE:46
+// @LINE:45
+// @LINE:44
+// @LINE:43
+// @LINE:42
+// @LINE:41
+// @LINE:37
+// @LINE:36
+// @LINE:35
+// @LINE:34
+// @LINE:33
+// @LINE:32
+// @LINE:31
+// @LINE:30
+// @LINE:29
+// @LINE:28
+// @LINE:27
+// @LINE:26
+// @LINE:25
+// @LINE:24
+// @LINE:23
+// @LINE:20
+// @LINE:19
+// @LINE:18
+// @LINE:17
+// @LINE:16
+// @LINE:15
+// @LINE:14
+// @LINE:11
+// @LINE:10
+// @LINE:9
+// @LINE:8
+// @LINE:7
+// @LINE:6
+package controllers {
+
+// @LINE:65
+// @LINE:64
+// @LINE:63
+class ReverseAssets {
+    
+
+// @LINE:65
+// @LINE:64
+// @LINE:63
+def at(path:String, file:String): Call = {
+   (path: @unchecked, file: @unchecked) match {
+// @LINE:63
+case (path, file) if path == "/public" => Call("GET", _prefix + { _defaultPrefix } + "assets/" + implicitly[PathBindable[String]].unbind("file", file))
+                                                        
+// @LINE:64
+case (path, file) if path == "/public/images" => Call("GET", _prefix + { _defaultPrefix } + "images/" + implicitly[PathBindable[String]].unbind("file", file))
+                                                        
+// @LINE:65
+case (path, file) if path == "/public/archivos/profesores" => Call("GET", _prefix + { _defaultPrefix } + "profesores/" + implicitly[PathBindable[String]].unbind("file", file))
+                                                        
+   }
+}
+                                                
+    
+}
+                          
+
+// @LINE:11
+// @LINE:10
+// @LINE:9
+// @LINE:8
+// @LINE:7
+// @LINE:6
+class ReverseHome {
+    
+
+// @LINE:7
+def acerca_de(): Call = {
+   Call("GET", _prefix + { _defaultPrefix } + "acerca_de")
+}
+                                                
+
+// @LINE:9
+def login(): Call = {
+   Call("GET", _prefix + { _defaultPrefix } + "home/ingresar")
+}
+                                                
+
+// @LINE:10
+def ingresar(): Call = {
+   Call("POST", _prefix + { _defaultPrefix } + "home/ingresar")
+}
+                                                
+
+// @LINE:11
+def inicio_alumno(): Call = {
+   Call("GET", _prefix + { _defaultPrefix } + "home/InicioAlumno")
+}
+                                                
+
+// @LINE:6
+def welcome(): Call = {
+   Call("GET", _prefix)
+}
+                                                
+
+// @LINE:8
+def salir(): Call = {
+   Call("GET", _prefix + { _defaultPrefix } + "home/salir")
+}
+                                                
+    
+}
+                          
+
+// @LINE:59
+// @LINE:58
+// @LINE:57
+// @LINE:56
+// @LINE:55
+// @LINE:54
+// @LINE:53
+// @LINE:52
+// @LINE:51
+// @LINE:50
+// @LINE:49
+// @LINE:48
+// @LINE:47
+// @LINE:46
+// @LINE:45
+// @LINE:44
+// @LINE:43
+// @LINE:42
+// @LINE:41
+class ReverseProfesorController {
+    
+
+// @LINE:44
+def create_curso(): Call = {
+   Call("GET", _prefix + { _defaultPrefix } + "profesor/CrearCurso")
+}
+                                                
+
+// @LINE:50
+def buscar(): Call = {
+   Call("GET", _prefix + { _defaultPrefix } + "profesor/buscar/")
+}
+                                                
+
+// @LINE:54
+def create_clase(id:Long): Call = {
+   Call("GET", _prefix + { _defaultPrefix } + "profesor/gestion_cursos/create_clase/" + implicitly[PathBindable[Long]].unbind("id", id))
+}
+                                                
+
+// @LINE:53
+def gestion_curso(id:Long): Call = {
+   Call("GET", _prefix + { _defaultPrefix } + "profesor/gestion_cursos/" + implicitly[PathBindable[Long]].unbind("id", id))
+}
+                                                
+
+// @LINE:49
+def delete(id:Long): Call = {
+   Call("POST", _prefix + { _defaultPrefix } + "profesor/delete/" + implicitly[PathBindable[Long]].unbind("id", id))
+}
+                                                
+
+// @LINE:45
+def save_curso(): Call = {
+   Call("POST", _prefix + { _defaultPrefix } + "profesor/CrearCurso")
+}
+                                                
+
+// @LINE:42
+def create(): Call = {
+   Call("GET", _prefix + { _defaultPrefix } + "profesor/new")
+}
+                                                
+
+// @LINE:43
+def inicio_profesor(): Call = {
+   Call("GET", _prefix + { _defaultPrefix } + "home/InicioProfesor")
+}
+                                                
+
+// @LINE:56
+def edit_clase(id:Long): Call = {
+   Call("GET", _prefix + { _defaultPrefix } + "profesor/gestion_cursos/edit_clase/" + implicitly[PathBindable[Long]].unbind("id", id))
+}
+                                                
+
+// @LINE:51
+def mostrar(): Call = {
+   Call("POST", _prefix + { _defaultPrefix } + "profesor/buscar/")
+}
+                                                
+
+// @LINE:52
+def gestion_cursos(): Call = {
+   Call("GET", _prefix + { _defaultPrefix } + "profesor/gestion_cursos")
+}
+                                                
+
+// @LINE:48
+def update(id:Long): Call = {
+   Call("POST", _prefix + { _defaultPrefix } + "profesor/editar/" + implicitly[PathBindable[Long]].unbind("id", id))
+}
+                                                
+
+// @LINE:57
+def update_clase(id:Long): Call = {
+   Call("POST", _prefix + { _defaultPrefix } + "profesor/gestion_cursos/edit_clase/" + implicitly[PathBindable[Long]].unbind("id", id))
+}
+                                                
+
+// @LINE:46
+def save(): Call = {
+   Call("POST", _prefix + { _defaultPrefix } + "profesor/new")
+}
+                                                
+
+// @LINE:41
+def index(): Call = {
+   Call("GET", _prefix + { _defaultPrefix } + "profesor/index")
+}
+                                                
+
+// @LINE:47
+def edit(id:Long): Call = {
+   Call("GET", _prefix + { _defaultPrefix } + "profesor/editar/" + implicitly[PathBindable[Long]].unbind("id", id))
+}
+                                                
+
+// @LINE:58
+def delete_clase(id:Long): Call = {
+   Call("POST", _prefix + { _defaultPrefix } + "profesor/gestion_cursos/delete/" + implicitly[PathBindable[Long]].unbind("id", id))
+}
+                                                
+
+// @LINE:55
+def save_clase(id:Long): Call = {
+   Call("POST", _prefix + { _defaultPrefix } + "profesor/gestion_cursos/create_clase/" + implicitly[PathBindable[Long]].unbind("id", id))
+}
+                                                
+
+// @LINE:59
+def download_clase(id:Long): Call = {
+   Call("POST", _prefix + { _defaultPrefix } + "profesor/gestion_cursos/download/" + implicitly[PathBindable[Long]].unbind("id", id))
+}
+                                                
+    
+}
+                          
+
+// @LINE:20
+// @LINE:19
+// @LINE:18
+// @LINE:17
+// @LINE:16
+// @LINE:15
+// @LINE:14
+class ReverseAdministrador {
+    
+
+// @LINE:20
+def delete(id:Long): Call = {
+   Call("POST", _prefix + { _defaultPrefix } + "admin/publicar/delete/" + implicitly[PathBindable[Long]].unbind("id", id))
+}
+                                                
+
+// @LINE:16
+def create(): Call = {
+   Call("GET", _prefix + { _defaultPrefix } + "admin/publicar/new")
+}
+                                                
+
+// @LINE:19
+def update(id:Long): Call = {
+   Call("POST", _prefix + { _defaultPrefix } + "admin/publicar/editar/" + implicitly[PathBindable[Long]].unbind("id", id))
+}
+                                                
+
+// @LINE:17
+def save(): Call = {
+   Call("POST", _prefix + { _defaultPrefix } + "admin/publicar/new")
+}
+                                                
+
+// @LINE:14
+def index(): Call = {
+   Call("GET", _prefix + { _defaultPrefix } + "admin/index")
+}
+                                                
+
+// @LINE:18
+def edit(id:Long): Call = {
+   Call("GET", _prefix + { _defaultPrefix } + "admin/publicar/editar/" + implicitly[PathBindable[Long]].unbind("id", id))
+}
+                                                
+
+// @LINE:15
+def publicar(): Call = {
+   Call("GET", _prefix + { _defaultPrefix } + "admin/publicar")
+}
+                                                
+    
+}
+                          
+
+// @LINE:37
+// @LINE:36
+// @LINE:35
+// @LINE:34
+// @LINE:33
+// @LINE:32
+// @LINE:31
+// @LINE:30
+// @LINE:29
+// @LINE:28
+// @LINE:27
+// @LINE:26
+// @LINE:25
+// @LINE:24
+// @LINE:23
+class ReverseAlumnoController {
+    
+
+// @LINE:34
+def buscar(): Call = {
+   Call("GET", _prefix + { _defaultPrefix } + "alumno/buscar/")
+}
+                                                
+
+// @LINE:33
+def delete(id:Long): Call = {
+   Call("POST", _prefix + { _defaultPrefix } + "delete/" + implicitly[PathBindable[Long]].unbind("id", id))
+}
+                                                
+
+// @LINE:28
+def edit_perfil(id:Long): Call = {
+   Call("GET", _prefix + { _defaultPrefix } + "alumno/perfil/" + implicitly[PathBindable[Long]].unbind("id", id))
+}
+                                                
+
+// @LINE:24
+def lista_cursos(): Call = {
+   Call("GET", _prefix + { _defaultPrefix } + "curso/listaCursos")
+}
+                                                
+
+// @LINE:31
+def edit_password(id:Long): Call = {
+   Call("GET", _prefix + { _defaultPrefix } + "alumno/password/" + implicitly[PathBindable[Long]].unbind("id", id))
+}
+                                                
+
+// @LINE:25
+def create(): Call = {
+   Call("GET", _prefix + { _defaultPrefix } + "alumno/new")
+}
+                                                
+
+// @LINE:35
+def mostrar(): Call = {
+   Call("POST", _prefix + { _defaultPrefix } + "alumno/buscar/")
+}
+                                                
+
+// @LINE:26
+def save(): Call = {
+   Call("POST", _prefix + { _defaultPrefix } + "alumno/new")
+}
+                                                
+
+// @LINE:27
+def editar_perfil(): Call = {
+   Call("GET", _prefix + { _defaultPrefix } + "home/perfil")
+}
+                                                
+
+// @LINE:29
+def update_perfil(id:Long): Call = {
+   Call("POST", _prefix + { _defaultPrefix } + "alumno/perfil/" + implicitly[PathBindable[Long]].unbind("id", id))
+}
+                                                
+
+// @LINE:36
+def buscar_curso(): Call = {
+   Call("GET", _prefix + { _defaultPrefix } + "alumno/buscar_curso/")
+}
+                                                
+
+// @LINE:30
+def editar_password(): Call = {
+   Call("GET", _prefix + { _defaultPrefix } + "alumno/password/")
+}
+                                                
+
+// @LINE:23
+def listaAlu(): Call = {
+   Call("GET", _prefix + { _defaultPrefix } + "alumno/listaAlu")
+}
+                                                
+
+// @LINE:37
+def mostrar_curso(): Call = {
+   Call("POST", _prefix + { _defaultPrefix } + "alumno/buscar_curso/")
+}
+                                                
+
+// @LINE:32
+def update_password(id:Long): Call = {
+   Call("POST", _prefix + { _defaultPrefix } + "alumno/password/" + implicitly[PathBindable[Long]].unbind("id", id))
+}
+                                                
+    
+}
+                          
+}
+                  
+
+
+// @LINE:65
+// @LINE:64
+// @LINE:63
+// @LINE:59
+// @LINE:58
+// @LINE:57
+// @LINE:56
+// @LINE:55
+// @LINE:54
+// @LINE:53
+// @LINE:52
+// @LINE:51
+// @LINE:50
+// @LINE:49
+// @LINE:48
+// @LINE:47
+// @LINE:46
+// @LINE:45
+// @LINE:44
+// @LINE:43
+// @LINE:42
+// @LINE:41
+// @LINE:37
+// @LINE:36
+// @LINE:35
+// @LINE:34
+// @LINE:33
+// @LINE:32
+// @LINE:31
+// @LINE:30
+// @LINE:29
+// @LINE:28
+// @LINE:27
+// @LINE:26
+// @LINE:25
+// @LINE:24
+// @LINE:23
+// @LINE:20
+// @LINE:19
+// @LINE:18
+// @LINE:17
+// @LINE:16
+// @LINE:15
+// @LINE:14
+// @LINE:11
+// @LINE:10
+// @LINE:9
+// @LINE:8
+// @LINE:7
+// @LINE:6
+package controllers.javascript {
+
+// @LINE:65
+// @LINE:64
+// @LINE:63
+class ReverseAssets {
+    
+
+// @LINE:65
+// @LINE:64
+// @LINE:63
+def at : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.Assets.at",
+   """
+      function(path, file) {
+      if (path == """ + implicitly[JavascriptLitteral[String]].to("/public") + """) {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "assets/" + (""" + implicitly[PathBindable[String]].javascriptUnbind + """)("file", file)})
+      }
+      if (path == """ + implicitly[JavascriptLitteral[String]].to("/public/images") + """) {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "images/" + (""" + implicitly[PathBindable[String]].javascriptUnbind + """)("file", file)})
+      }
+      if (path == """ + implicitly[JavascriptLitteral[String]].to("/public/archivos/profesores") + """) {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "profesores/" + (""" + implicitly[PathBindable[String]].javascriptUnbind + """)("file", file)})
+      }
+      }
+   """
+)
+                        
+    
+}
+              
+
+// @LINE:11
+// @LINE:10
+// @LINE:9
+// @LINE:8
+// @LINE:7
+// @LINE:6
+class ReverseHome {
+    
+
+// @LINE:7
+def acerca_de : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.Home.acerca_de",
+   """
+      function() {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "acerca_de"})
+      }
+   """
+)
+                        
+
+// @LINE:9
+def login : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.Home.login",
+   """
+      function() {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "home/ingresar"})
+      }
+   """
+)
+                        
+
+// @LINE:10
+def ingresar : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.Home.ingresar",
+   """
+      function() {
+      return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "home/ingresar"})
+      }
+   """
+)
+                        
+
+// @LINE:11
+def inicio_alumno : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.Home.inicio_alumno",
+   """
+      function() {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "home/InicioAlumno"})
+      }
+   """
+)
+                        
+
+// @LINE:6
+def welcome : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.Home.welcome",
+   """
+      function() {
+      return _wA({method:"GET", url:"""" + _prefix + """"})
+      }
+   """
+)
+                        
+
+// @LINE:8
+def salir : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.Home.salir",
+   """
+      function() {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "home/salir"})
+      }
+   """
+)
+                        
+    
+}
+              
+
+// @LINE:59
+// @LINE:58
+// @LINE:57
+// @LINE:56
+// @LINE:55
+// @LINE:54
+// @LINE:53
+// @LINE:52
+// @LINE:51
+// @LINE:50
+// @LINE:49
+// @LINE:48
+// @LINE:47
+// @LINE:46
+// @LINE:45
+// @LINE:44
+// @LINE:43
+// @LINE:42
+// @LINE:41
+class ReverseProfesorController {
+    
+
+// @LINE:44
+def create_curso : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.ProfesorController.create_curso",
+   """
+      function() {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "profesor/CrearCurso"})
+      }
+   """
+)
+                        
+
+// @LINE:50
+def buscar : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.ProfesorController.buscar",
+   """
+      function() {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "profesor/buscar/"})
+      }
+   """
+)
+                        
+
+// @LINE:54
+def create_clase : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.ProfesorController.create_clase",
+   """
+      function(id) {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "profesor/gestion_cursos/create_clase/" + (""" + implicitly[PathBindable[Long]].javascriptUnbind + """)("id", id)})
+      }
+   """
+)
+                        
+
+// @LINE:53
+def gestion_curso : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.ProfesorController.gestion_curso",
+   """
+      function(id) {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "profesor/gestion_cursos/" + (""" + implicitly[PathBindable[Long]].javascriptUnbind + """)("id", id)})
+      }
+   """
+)
+                        
+
+// @LINE:49
+def delete : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.ProfesorController.delete",
+   """
+      function(id) {
+      return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "profesor/delete/" + (""" + implicitly[PathBindable[Long]].javascriptUnbind + """)("id", id)})
+      }
+   """
+)
+                        
+
+// @LINE:45
+def save_curso : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.ProfesorController.save_curso",
+   """
+      function() {
+      return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "profesor/CrearCurso"})
+      }
+   """
+)
+                        
+
+// @LINE:42
+def create : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.ProfesorController.create",
+   """
+      function() {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "profesor/new"})
+      }
+   """
+)
+                        
+
+// @LINE:43
+def inicio_profesor : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.ProfesorController.inicio_profesor",
+   """
+      function() {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "home/InicioProfesor"})
+      }
+   """
+)
+                        
+
+// @LINE:56
+def edit_clase : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.ProfesorController.edit_clase",
+   """
+      function(id) {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "profesor/gestion_cursos/edit_clase/" + (""" + implicitly[PathBindable[Long]].javascriptUnbind + """)("id", id)})
+      }
+   """
+)
+                        
+
+// @LINE:51
+def mostrar : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.ProfesorController.mostrar",
+   """
+      function() {
+      return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "profesor/buscar/"})
+      }
+   """
+)
+                        
+
+// @LINE:52
+def gestion_cursos : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.ProfesorController.gestion_cursos",
+   """
+      function() {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "profesor/gestion_cursos"})
+      }
+   """
+)
+                        
+
+// @LINE:48
+def update : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.ProfesorController.update",
+   """
+      function(id) {
+      return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "profesor/editar/" + (""" + implicitly[PathBindable[Long]].javascriptUnbind + """)("id", id)})
+      }
+   """
+)
+                        
+
+// @LINE:57
+def update_clase : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.ProfesorController.update_clase",
+   """
+      function(id) {
+      return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "profesor/gestion_cursos/edit_clase/" + (""" + implicitly[PathBindable[Long]].javascriptUnbind + """)("id", id)})
+      }
+   """
+)
+                        
+
+// @LINE:46
+def save : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.ProfesorController.save",
+   """
+      function() {
+      return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "profesor/new"})
+      }
+   """
+)
+                        
+
+// @LINE:41
+def index : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.ProfesorController.index",
+   """
+      function() {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "profesor/index"})
+      }
+   """
+)
+                        
+
+// @LINE:47
+def edit : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.ProfesorController.edit",
+   """
+      function(id) {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "profesor/editar/" + (""" + implicitly[PathBindable[Long]].javascriptUnbind + """)("id", id)})
+      }
+   """
+)
+                        
+
+// @LINE:58
+def delete_clase : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.ProfesorController.delete_clase",
+   """
+      function(id) {
+      return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "profesor/gestion_cursos/delete/" + (""" + implicitly[PathBindable[Long]].javascriptUnbind + """)("id", id)})
+      }
+   """
+)
+                        
+
+// @LINE:55
+def save_clase : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.ProfesorController.save_clase",
+   """
+      function(id) {
+      return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "profesor/gestion_cursos/create_clase/" + (""" + implicitly[PathBindable[Long]].javascriptUnbind + """)("id", id)})
+      }
+   """
+)
+                        
+
+// @LINE:59
+def download_clase : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.ProfesorController.download_clase",
+   """
+      function(id) {
+      return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "profesor/gestion_cursos/download/" + (""" + implicitly[PathBindable[Long]].javascriptUnbind + """)("id", id)})
+      }
+   """
+)
+                        
+    
+}
+              
+
+// @LINE:20
+// @LINE:19
+// @LINE:18
+// @LINE:17
+// @LINE:16
+// @LINE:15
+// @LINE:14
+class ReverseAdministrador {
+    
+
+// @LINE:20
+def delete : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.Administrador.delete",
+   """
+      function(id) {
+      return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "admin/publicar/delete/" + (""" + implicitly[PathBindable[Long]].javascriptUnbind + """)("id", id)})
+      }
+   """
+)
+                        
+
+// @LINE:16
+def create : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.Administrador.create",
+   """
+      function() {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "admin/publicar/new"})
+      }
+   """
+)
+                        
+
+// @LINE:19
+def update : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.Administrador.update",
+   """
+      function(id) {
+      return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "admin/publicar/editar/" + (""" + implicitly[PathBindable[Long]].javascriptUnbind + """)("id", id)})
+      }
+   """
+)
+                        
+
+// @LINE:17
+def save : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.Administrador.save",
+   """
+      function() {
+      return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "admin/publicar/new"})
+      }
+   """
+)
+                        
+
+// @LINE:14
+def index : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.Administrador.index",
+   """
+      function() {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "admin/index"})
+      }
+   """
+)
+                        
+
+// @LINE:18
+def edit : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.Administrador.edit",
+   """
+      function(id) {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "admin/publicar/editar/" + (""" + implicitly[PathBindable[Long]].javascriptUnbind + """)("id", id)})
+      }
+   """
+)
+                        
+
+// @LINE:15
+def publicar : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.Administrador.publicar",
+   """
+      function() {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "admin/publicar"})
+      }
+   """
+)
+                        
+    
+}
+              
+
+// @LINE:37
+// @LINE:36
+// @LINE:35
+// @LINE:34
+// @LINE:33
+// @LINE:32
+// @LINE:31
+// @LINE:30
+// @LINE:29
+// @LINE:28
+// @LINE:27
+// @LINE:26
+// @LINE:25
+// @LINE:24
+// @LINE:23
+class ReverseAlumnoController {
+    
+
+// @LINE:34
+def buscar : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.AlumnoController.buscar",
+   """
+      function() {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "alumno/buscar/"})
+      }
+   """
+)
+                        
+
+// @LINE:33
+def delete : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.AlumnoController.delete",
+   """
+      function(id) {
+      return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "delete/" + (""" + implicitly[PathBindable[Long]].javascriptUnbind + """)("id", id)})
+      }
+   """
+)
+                        
+
+// @LINE:28
+def edit_perfil : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.AlumnoController.edit_perfil",
+   """
+      function(id) {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "alumno/perfil/" + (""" + implicitly[PathBindable[Long]].javascriptUnbind + """)("id", id)})
+      }
+   """
+)
+                        
+
+// @LINE:24
+def lista_cursos : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.AlumnoController.lista_cursos",
+   """
+      function() {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "curso/listaCursos"})
+      }
+   """
+)
+                        
+
+// @LINE:31
+def edit_password : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.AlumnoController.edit_password",
+   """
+      function(id) {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "alumno/password/" + (""" + implicitly[PathBindable[Long]].javascriptUnbind + """)("id", id)})
+      }
+   """
+)
+                        
+
+// @LINE:25
+def create : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.AlumnoController.create",
+   """
+      function() {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "alumno/new"})
+      }
+   """
+)
+                        
+
+// @LINE:35
+def mostrar : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.AlumnoController.mostrar",
+   """
+      function() {
+      return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "alumno/buscar/"})
+      }
+   """
+)
+                        
+
+// @LINE:26
+def save : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.AlumnoController.save",
+   """
+      function() {
+      return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "alumno/new"})
+      }
+   """
+)
+                        
+
+// @LINE:27
+def editar_perfil : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.AlumnoController.editar_perfil",
+   """
+      function() {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "home/perfil"})
+      }
+   """
+)
+                        
+
+// @LINE:29
+def update_perfil : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.AlumnoController.update_perfil",
+   """
+      function(id) {
+      return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "alumno/perfil/" + (""" + implicitly[PathBindable[Long]].javascriptUnbind + """)("id", id)})
+      }
+   """
+)
+                        
+
+// @LINE:36
+def buscar_curso : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.AlumnoController.buscar_curso",
+   """
+      function() {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "alumno/buscar_curso/"})
+      }
+   """
+)
+                        
+
+// @LINE:30
+def editar_password : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.AlumnoController.editar_password",
+   """
+      function() {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "alumno/password/"})
+      }
+   """
+)
+                        
+
+// @LINE:23
+def listaAlu : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.AlumnoController.listaAlu",
+   """
+      function() {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "alumno/listaAlu"})
+      }
+   """
+)
+                        
+
+// @LINE:37
+def mostrar_curso : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.AlumnoController.mostrar_curso",
+   """
+      function() {
+      return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "alumno/buscar_curso/"})
+      }
+   """
+)
+                        
+
+// @LINE:32
+def update_password : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.AlumnoController.update_password",
+   """
+      function(id) {
+      return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "alumno/password/" + (""" + implicitly[PathBindable[Long]].javascriptUnbind + """)("id", id)})
+      }
+   """
+)
+                        
+    
+}
+              
+}
+        
+
+
+// @LINE:65
+// @LINE:64
+// @LINE:63
+// @LINE:59
+// @LINE:58
+// @LINE:57
+// @LINE:56
+// @LINE:55
+// @LINE:54
+// @LINE:53
+// @LINE:52
+// @LINE:51
+// @LINE:50
+// @LINE:49
+// @LINE:48
+// @LINE:47
+// @LINE:46
+// @LINE:45
+// @LINE:44
+// @LINE:43
+// @LINE:42
+// @LINE:41
+// @LINE:37
+// @LINE:36
+// @LINE:35
+// @LINE:34
+// @LINE:33
+// @LINE:32
+// @LINE:31
+// @LINE:30
+// @LINE:29
+// @LINE:28
+// @LINE:27
+// @LINE:26
+// @LINE:25
+// @LINE:24
+// @LINE:23
+// @LINE:20
+// @LINE:19
+// @LINE:18
+// @LINE:17
+// @LINE:16
+// @LINE:15
+// @LINE:14
+// @LINE:11
+// @LINE:10
+// @LINE:9
+// @LINE:8
+// @LINE:7
+// @LINE:6
+package controllers.ref {
+
+// @LINE:65
+// @LINE:64
+// @LINE:63
+class ReverseAssets {
+    
+
+// @LINE:63
+def at(path:String, file:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.Assets.at(path, file), HandlerDef(this, "controllers.Assets", "at", Seq(classOf[String], classOf[String]), "GET", """ Map static resources from the /public folder to the /assets URL path""", _prefix + """assets/$file<.+>""")
+)
+                      
+    
+}
+                          
+
+// @LINE:11
+// @LINE:10
+// @LINE:9
+// @LINE:8
+// @LINE:7
+// @LINE:6
+class ReverseHome {
+    
+
+// @LINE:7
+def acerca_de(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.Home.acerca_de(), HandlerDef(this, "controllers.Home", "acerca_de", Seq(), "GET", """""", _prefix + """acerca_de""")
+)
+                      
+
+// @LINE:9
+def login(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.Home.login(), HandlerDef(this, "controllers.Home", "login", Seq(), "GET", """""", _prefix + """home/ingresar""")
+)
+                      
+
+// @LINE:10
+def ingresar(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.Home.ingresar(), HandlerDef(this, "controllers.Home", "ingresar", Seq(), "POST", """""", _prefix + """home/ingresar""")
+)
+                      
+
+// @LINE:11
+def inicio_alumno(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.Home.inicio_alumno(), HandlerDef(this, "controllers.Home", "inicio_alumno", Seq(), "GET", """""", _prefix + """home/InicioAlumno""")
+)
+                      
+
+// @LINE:6
+def welcome(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.Home.welcome(), HandlerDef(this, "controllers.Home", "welcome", Seq(), "GET", """ Home page""", _prefix + """""")
+)
+                      
+
+// @LINE:8
+def salir(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.Home.salir(), HandlerDef(this, "controllers.Home", "salir", Seq(), "GET", """""", _prefix + """home/salir""")
+)
+                      
+    
+}
+                          
+
+// @LINE:59
+// @LINE:58
+// @LINE:57
+// @LINE:56
+// @LINE:55
+// @LINE:54
+// @LINE:53
+// @LINE:52
+// @LINE:51
+// @LINE:50
+// @LINE:49
+// @LINE:48
+// @LINE:47
+// @LINE:46
+// @LINE:45
+// @LINE:44
+// @LINE:43
+// @LINE:42
+// @LINE:41
+class ReverseProfesorController {
+    
+
+// @LINE:44
+def create_curso(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.ProfesorController.create_curso(), HandlerDef(this, "controllers.ProfesorController", "create_curso", Seq(), "GET", """""", _prefix + """profesor/CrearCurso""")
+)
+                      
+
+// @LINE:50
+def buscar(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.ProfesorController.buscar(), HandlerDef(this, "controllers.ProfesorController", "buscar", Seq(), "GET", """""", _prefix + """profesor/buscar/""")
+)
+                      
+
+// @LINE:54
+def create_clase(id:Long): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.ProfesorController.create_clase(id), HandlerDef(this, "controllers.ProfesorController", "create_clase", Seq(classOf[Long]), "GET", """""", _prefix + """profesor/gestion_cursos/create_clase/$id<[^/]+>""")
+)
+                      
+
+// @LINE:53
+def gestion_curso(id:Long): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.ProfesorController.gestion_curso(id), HandlerDef(this, "controllers.ProfesorController", "gestion_curso", Seq(classOf[Long]), "GET", """""", _prefix + """profesor/gestion_cursos/$id<[^/]+>""")
+)
+                      
+
+// @LINE:49
+def delete(id:Long): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.ProfesorController.delete(id), HandlerDef(this, "controllers.ProfesorController", "delete", Seq(classOf[Long]), "POST", """""", _prefix + """profesor/delete/$id<[^/]+>""")
+)
+                      
+
+// @LINE:45
+def save_curso(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.ProfesorController.save_curso(), HandlerDef(this, "controllers.ProfesorController", "save_curso", Seq(), "POST", """""", _prefix + """profesor/CrearCurso""")
+)
+                      
+
+// @LINE:42
+def create(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.ProfesorController.create(), HandlerDef(this, "controllers.ProfesorController", "create", Seq(), "GET", """""", _prefix + """profesor/new""")
+)
+                      
+
+// @LINE:43
+def inicio_profesor(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.ProfesorController.inicio_profesor(), HandlerDef(this, "controllers.ProfesorController", "inicio_profesor", Seq(), "GET", """""", _prefix + """home/InicioProfesor""")
+)
+                      
+
+// @LINE:56
+def edit_clase(id:Long): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.ProfesorController.edit_clase(id), HandlerDef(this, "controllers.ProfesorController", "edit_clase", Seq(classOf[Long]), "GET", """""", _prefix + """profesor/gestion_cursos/edit_clase/$id<[^/]+>""")
+)
+                      
+
+// @LINE:51
+def mostrar(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.ProfesorController.mostrar(), HandlerDef(this, "controllers.ProfesorController", "mostrar", Seq(), "POST", """""", _prefix + """profesor/buscar/""")
+)
+                      
+
+// @LINE:52
+def gestion_cursos(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.ProfesorController.gestion_cursos(), HandlerDef(this, "controllers.ProfesorController", "gestion_cursos", Seq(), "GET", """""", _prefix + """profesor/gestion_cursos""")
+)
+                      
+
+// @LINE:48
+def update(id:Long): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.ProfesorController.update(id), HandlerDef(this, "controllers.ProfesorController", "update", Seq(classOf[Long]), "POST", """""", _prefix + """profesor/editar/$id<[^/]+>""")
+)
+                      
+
+// @LINE:57
+def update_clase(id:Long): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.ProfesorController.update_clase(id), HandlerDef(this, "controllers.ProfesorController", "update_clase", Seq(classOf[Long]), "POST", """""", _prefix + """profesor/gestion_cursos/edit_clase/$id<[^/]+>""")
+)
+                      
+
+// @LINE:46
+def save(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.ProfesorController.save(), HandlerDef(this, "controllers.ProfesorController", "save", Seq(), "POST", """""", _prefix + """profesor/new""")
+)
+                      
+
+// @LINE:41
+def index(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.ProfesorController.index(), HandlerDef(this, "controllers.ProfesorController", "index", Seq(), "GET", """Profesor""", _prefix + """profesor/index""")
+)
+                      
+
+// @LINE:47
+def edit(id:Long): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.ProfesorController.edit(id), HandlerDef(this, "controllers.ProfesorController", "edit", Seq(classOf[Long]), "GET", """""", _prefix + """profesor/editar/$id<[^/]+>""")
+)
+                      
+
+// @LINE:58
+def delete_clase(id:Long): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.ProfesorController.delete_clase(id), HandlerDef(this, "controllers.ProfesorController", "delete_clase", Seq(classOf[Long]), "POST", """""", _prefix + """profesor/gestion_cursos/delete/$id<[^/]+>""")
+)
+                      
+
+// @LINE:55
+def save_clase(id:Long): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.ProfesorController.save_clase(id), HandlerDef(this, "controllers.ProfesorController", "save_clase", Seq(classOf[Long]), "POST", """""", _prefix + """profesor/gestion_cursos/create_clase/$id<[^/]+>""")
+)
+                      
+
+// @LINE:59
+def download_clase(id:Long): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.ProfesorController.download_clase(id), HandlerDef(this, "controllers.ProfesorController", "download_clase", Seq(classOf[Long]), "POST", """""", _prefix + """profesor/gestion_cursos/download/$id<[^/]+>""")
+)
+                      
+    
+}
+                          
+
+// @LINE:20
+// @LINE:19
+// @LINE:18
+// @LINE:17
+// @LINE:16
+// @LINE:15
+// @LINE:14
+class ReverseAdministrador {
+    
+
+// @LINE:20
+def delete(id:Long): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.Administrador.delete(id), HandlerDef(this, "controllers.Administrador", "delete", Seq(classOf[Long]), "POST", """""", _prefix + """admin/publicar/delete/$id<[^/]+>""")
+)
+                      
+
+// @LINE:16
+def create(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.Administrador.create(), HandlerDef(this, "controllers.Administrador", "create", Seq(), "GET", """""", _prefix + """admin/publicar/new""")
+)
+                      
+
+// @LINE:19
+def update(id:Long): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.Administrador.update(id), HandlerDef(this, "controllers.Administrador", "update", Seq(classOf[Long]), "POST", """""", _prefix + """admin/publicar/editar/$id<[^/]+>""")
+)
+                      
+
+// @LINE:17
+def save(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.Administrador.save(), HandlerDef(this, "controllers.Administrador", "save", Seq(), "POST", """""", _prefix + """admin/publicar/new""")
+)
+                      
+
+// @LINE:14
+def index(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.Administrador.index(), HandlerDef(this, "controllers.Administrador", "index", Seq(), "GET", """Administrador""", _prefix + """admin/index""")
+)
+                      
+
+// @LINE:18
+def edit(id:Long): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.Administrador.edit(id), HandlerDef(this, "controllers.Administrador", "edit", Seq(classOf[Long]), "GET", """""", _prefix + """admin/publicar/editar/$id<[^/]+>""")
+)
+                      
+
+// @LINE:15
+def publicar(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.Administrador.publicar(), HandlerDef(this, "controllers.Administrador", "publicar", Seq(), "GET", """""", _prefix + """admin/publicar""")
+)
+                      
+    
+}
+                          
+
+// @LINE:37
+// @LINE:36
+// @LINE:35
+// @LINE:34
+// @LINE:33
+// @LINE:32
+// @LINE:31
+// @LINE:30
+// @LINE:29
+// @LINE:28
+// @LINE:27
+// @LINE:26
+// @LINE:25
+// @LINE:24
+// @LINE:23
+class ReverseAlumnoController {
+    
+
+// @LINE:34
+def buscar(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.AlumnoController.buscar(), HandlerDef(this, "controllers.AlumnoController", "buscar", Seq(), "GET", """""", _prefix + """alumno/buscar/""")
+)
+                      
+
+// @LINE:33
+def delete(id:Long): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.AlumnoController.delete(id), HandlerDef(this, "controllers.AlumnoController", "delete", Seq(classOf[Long]), "POST", """""", _prefix + """delete/$id<[^/]+>""")
+)
+                      
+
+// @LINE:28
+def edit_perfil(id:Long): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.AlumnoController.edit_perfil(id), HandlerDef(this, "controllers.AlumnoController", "edit_perfil", Seq(classOf[Long]), "GET", """""", _prefix + """alumno/perfil/$id<[^/]+>""")
+)
+                      
+
+// @LINE:24
+def lista_cursos(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.AlumnoController.lista_cursos(), HandlerDef(this, "controllers.AlumnoController", "lista_cursos", Seq(), "GET", """""", _prefix + """curso/listaCursos""")
+)
+                      
+
+// @LINE:31
+def edit_password(id:Long): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.AlumnoController.edit_password(id), HandlerDef(this, "controllers.AlumnoController", "edit_password", Seq(classOf[Long]), "GET", """""", _prefix + """alumno/password/$id<[^/]+>""")
+)
+                      
+
+// @LINE:25
+def create(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.AlumnoController.create(), HandlerDef(this, "controllers.AlumnoController", "create", Seq(), "GET", """""", _prefix + """alumno/new""")
+)
+                      
+
+// @LINE:35
+def mostrar(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.AlumnoController.mostrar(), HandlerDef(this, "controllers.AlumnoController", "mostrar", Seq(), "POST", """""", _prefix + """alumno/buscar/""")
+)
+                      
+
+// @LINE:26
+def save(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.AlumnoController.save(), HandlerDef(this, "controllers.AlumnoController", "save", Seq(), "POST", """""", _prefix + """alumno/new""")
+)
+                      
+
+// @LINE:27
+def editar_perfil(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.AlumnoController.editar_perfil(), HandlerDef(this, "controllers.AlumnoController", "editar_perfil", Seq(), "GET", """""", _prefix + """home/perfil""")
+)
+                      
+
+// @LINE:29
+def update_perfil(id:Long): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.AlumnoController.update_perfil(id), HandlerDef(this, "controllers.AlumnoController", "update_perfil", Seq(classOf[Long]), "POST", """""", _prefix + """alumno/perfil/$id<[^/]+>""")
+)
+                      
+
+// @LINE:36
+def buscar_curso(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.AlumnoController.buscar_curso(), HandlerDef(this, "controllers.AlumnoController", "buscar_curso", Seq(), "GET", """""", _prefix + """alumno/buscar_curso/""")
+)
+                      
+
+// @LINE:30
+def editar_password(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.AlumnoController.editar_password(), HandlerDef(this, "controllers.AlumnoController", "editar_password", Seq(), "GET", """""", _prefix + """alumno/password/""")
+)
+                      
+
+// @LINE:23
+def listaAlu(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.AlumnoController.listaAlu(), HandlerDef(this, "controllers.AlumnoController", "listaAlu", Seq(), "GET", """Alumno""", _prefix + """alumno/listaAlu""")
+)
+                      
+
+// @LINE:37
+def mostrar_curso(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.AlumnoController.mostrar_curso(), HandlerDef(this, "controllers.AlumnoController", "mostrar_curso", Seq(), "POST", """""", _prefix + """alumno/buscar_curso/""")
+)
+                      
+
+// @LINE:32
+def update_password(id:Long): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.AlumnoController.update_password(id), HandlerDef(this, "controllers.AlumnoController", "update_password", Seq(classOf[Long]), "POST", """""", _prefix + """alumno/password/$id<[^/]+>""")
+)
+                      
+    
+}
+                          
+}
+                  
+      

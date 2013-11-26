@@ -1,0 +1,23 @@
+@(formulario: Form[Noticia])
+
+@import helper._
+
+@implicitFieldConstructor=@{ FieldConstructor(views.html.include.constructor_field_input.render) }
+
+@main("Publicar en Pantalla Principal") {
+
+<h2> Crear Publicaciones </h2>
+
+@form(routes.Administrador.save()) {
+	
+		@inputText(formulario("titulo"),'_showConstraints -> false,        '_label -> "Titulo:")
+		@textarea(formulario("contenido"), '_showConstraints -> false, '_label -> "Descripcion:")
+		@inputFile(formulario("imagen"),'_showConstraints -> false,      '_label -> "Direccion Imagen:")
+		@inputRadioGroup(formulario("escuela"), options = options("Escuela de Sistemas"->"E.A.P Sistemas","Escuela de Software"->"E.A.P Software","Comunidad Fisi"->"Comunidad Fisi"),'_showConstraints -> false, '_label -> "Escuela Academico Profesional:")
+	
+    
+    <input type="submit" value="Crear"> -
+	<a href="@routes.Administrador.index()"> <input type="button" value="Cancelar"> </a>
+}
+    
+}

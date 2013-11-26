@@ -1,0 +1,99 @@
+
+package views.html.profesor
+
+import play.templates._
+import play.templates.TemplateMagic._
+
+import play.api.templates._
+import play.api.templates.PlayMagic._
+import models._
+import controllers._
+import java.lang._
+import java.util._
+import scala.collection.JavaConversions._
+import scala.collection.JavaConverters._
+import play.api.i18n._
+import play.core.j.PlayMagicForJava._
+import play.mvc._
+import play.data._
+import play.api.data.Field
+import play.mvc.Http.Context.Implicit._
+import views.html._
+/**/
+object index extends BaseScalaTemplate[play.api.templates.Html,Format[play.api.templates.Html]](play.api.templates.HtmlFormat) with play.api.templates.Template1[List[Profesor],play.api.templates.Html] {
+
+    /**/
+    def apply/*1.2*/(lista: List[Profesor]):play.api.templates.Html = {
+        _display_ {import helper._
+
+
+Seq[Any](format.raw/*1.25*/("""
+
+"""),format.raw/*4.1*/("""
+
+"""),_display_(Seq[Any](/*6.2*/main("Lista Profesores")/*6.26*/ {_display_(Seq[Any](format.raw/*6.28*/("""
+    
+<h2> <image src=""""),_display_(Seq[Any](/*8.19*/routes/*8.25*/.Assets.at("/public/images","menu.png"))),format.raw/*8.64*/(""""> Lista de Profesores </h2>
+
+"""),_display_(Seq[Any](/*10.2*/if(flash.containsKey("success"))/*10.34*/ {_display_(Seq[Any](format.raw/*10.36*/("""
+	<h3 style="color: green">
+		<image src=""""),_display_(Seq[Any](/*12.16*/routes/*12.22*/.Assets.at("/public/images","ok.gif"))),format.raw/*12.59*/("""">
+		"""),_display_(Seq[Any](/*13.4*/flash/*13.9*/.get("success"))),format.raw/*13.24*/("""
+	</h3>
+""")))})),format.raw/*15.2*/(""" 
+
+<table class="table table-bordered">
+	<tr >
+		<th>ID</th>
+		<th>DNI</th>
+		<th>Nombres</th>
+		<th>Apellidos</th>
+		<th>fecha nac.</th>
+		<th>email</th>
+		<th>creado</th>
+		<th>modificado</th>
+	</tr>
+
+	"""),_display_(Seq[Any](/*29.3*/for(registro <- lista) yield /*29.25*/ {_display_(Seq[Any](format.raw/*29.27*/("""
+	<tr >
+		<td>"""),_display_(Seq[Any](/*31.8*/registro/*31.16*/.id)),format.raw/*31.19*/("""</td>
+		<td>"""),_display_(Seq[Any](/*32.8*/registro/*32.16*/.dni)),format.raw/*32.20*/("""</td>
+		<td>"""),_display_(Seq[Any](/*33.8*/registro/*33.16*/.nombres)),format.raw/*33.24*/("""</td>
+		<td>"""),_display_(Seq[Any](/*34.8*/registro/*34.16*/.apellidos)),format.raw/*34.26*/("""</td>
+		<td>"""),_display_(Seq[Any](/*35.8*/registro/*35.16*/.fecha.format("dd/MM/yyyy"))),format.raw/*35.43*/("""</td>
+		<td>"""),_display_(Seq[Any](/*36.8*/registro/*36.16*/.email)),format.raw/*36.22*/("""</td>
+		<td>"""),_display_(Seq[Any](/*37.8*/registro/*37.16*/.created.format("dd/MM/yyyy"))),format.raw/*37.45*/("""</td>
+		<td>"""),_display_(Seq[Any](/*38.8*/registro/*38.16*/.updated.format("dd/MM/yyyy"))),format.raw/*38.45*/("""</td>
+		<td><a href=""""),_display_(Seq[Any](/*39.17*/routes/*39.23*/.ProfesorController.edit(registro.id))),format.raw/*39.60*/(""""> <input type="button" value="Editar"> </a></td>
+		<td>
+			"""),_display_(Seq[Any](/*41.5*/form(routes.ProfesorController.delete(registro.id))/*41.56*/ {_display_(Seq[Any](format.raw/*41.58*/("""
+				<input type="submit" value="Eliminar">
+			""")))})),format.raw/*43.5*/("""
+		</td>
+		
+	</tr>
+	""")))})),format.raw/*47.3*/("""
+</table>
+
+<a href=""""),_display_(Seq[Any](/*50.11*/routes/*50.17*/.ProfesorController.create())),format.raw/*50.45*/(""""> <input type="button" value="Crear"> </a>
+<a href=""""),_display_(Seq[Any](/*51.11*/routes/*51.17*/.ProfesorController.buscar())),format.raw/*51.45*/(""""> <input type="button" value="Buscar"> </a>
+""")))})))}
+    }
+    
+    def render(lista:List[Profesor]): play.api.templates.Html = apply(lista)
+    
+    def f:((List[Profesor]) => play.api.templates.Html) = (lista) => apply(lista)
+    
+    def ref: this.type = this
+
+}
+                /*
+                    -- GENERATED --
+                    DATE: Sun Nov 24 13:10:59 COT 2013
+                    SOURCE: C:/wwww/tuto/branches/HERNAN/app/views/profesor/index.scala.html
+                    HASH: b7d61941fba126a4bd1e72e1e40b5fb6aa28db29
+                    MATRIX: 740->1|856->24|884->43|921->46|953->70|992->72|1051->96|1065->102|1125->141|1191->172|1232->204|1272->206|1351->249|1366->255|1425->292|1466->298|1479->303|1516->318|1556->327|1796->532|1834->554|1874->556|1924->571|1941->579|1966->582|2014->595|2031->603|2057->607|2105->620|2122->628|2152->636|2200->649|2217->657|2249->667|2297->680|2314->688|2363->715|2411->728|2428->736|2456->742|2504->755|2521->763|2572->792|2620->805|2637->813|2688->842|2746->864|2761->870|2820->907|2916->968|2976->1019|3016->1021|3095->1069|3147->1090|3204->1111|3219->1117|3269->1145|3359->1199|3374->1205|3424->1233
+                    LINES: 26->1|30->1|32->4|34->6|34->6|34->6|36->8|36->8|36->8|38->10|38->10|38->10|40->12|40->12|40->12|41->13|41->13|41->13|43->15|57->29|57->29|57->29|59->31|59->31|59->31|60->32|60->32|60->32|61->33|61->33|61->33|62->34|62->34|62->34|63->35|63->35|63->35|64->36|64->36|64->36|65->37|65->37|65->37|66->38|66->38|66->38|67->39|67->39|67->39|69->41|69->41|69->41|71->43|75->47|78->50|78->50|78->50|79->51|79->51|79->51
+                    -- GENERATED --
+                */
+            

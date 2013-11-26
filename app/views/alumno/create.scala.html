@@ -1,0 +1,80 @@
+@(AF: Form[Alumno])
+
+@import helper._
+
+@implicitFieldConstructor=@{ FieldConstructor(views.html.include.constructor_field_input.render) }
+
+
+@main("FORMULARIO NUEVO USUARIO") {
+
+@form(routes.AlumnoController.save()){
+	<fieldset>
+	@inputText(AF("codigo"), args = 'size -> 5,'_showConstraints -> false, '_label -> "Codigo:")
+	@inputText(AF("nombres"), args = 'size -> 15,'_showConstraints -> false, '_label -> "Nombres:")
+	@inputText(AF("apellidos"), args = 'size -> 15,'_showConstraints -> false, '_label -> "Apellidos:")
+	@select(AF("genero"), 
+		options = options(
+			"Masculino"->"Masculino",
+			"Femenino"->"Femenino"
+			)
+		,'_showConstraints -> false, '_label -> "Genero:"		
+	)
+	@inputDate(AF("fecha"), args = 'size -> 15,'_showConstraints -> false, '_label -> "Fecha de Nacimiento")
+	@inputText(AF("residencia"), args = 'size -> 30,'_showConstraints -> false, '_label -> "Residencia")
+	@select(AF("provincia"), 
+		options = options(
+			"Ancon"->"Ancon",
+			"Ate"->"Ate",
+			"Bre�a"->"Brena",
+			"Carabayllo"->"Carabayllo",
+			"Cercado de Lima"->"Cercado de Lima",
+			"Chaclacayo"->"Chaclacayo",
+			"Chorrillos"->"Chorrillos",
+			"Cieneguilla"->"Cieneguilla",
+			"Comas"->"Comas",
+			"El Agustino"->"El Agustino",
+			"Independencia"->"Independencia",
+			"Jesus Maria"->"Jesus Maria",
+			"La Molina"->"La Molina",
+			"La Victoria"->"La Victoria",
+			"Lince"->"Lince",
+			"Los Olivos"->"Los Olivos",
+			"Lurigancho-Chosica"->"Lurigancho-Chosica",
+			"Lurin"->"Lurin",
+			"Magdalena del Mar"->"Magdalena del Mar",
+			"Pueblo Libre"->"Pueblo Libre",
+			"Miraflores"->"Miraflores",
+			"Pachacamac"->"Pachacamac",
+			"Pucusana"->"Pucusana",
+			"Puente Piedra"->"Puente Piedra",
+			"Punta Hermosa"->"Punta Hermosa",
+			"Punta Negra"->"Punta Negra",
+			"Rimac"->"Rimac",
+			"San Bartolo"->"San Bartolo",
+			"San Borja"->"San Borja",
+			"San Isidro"->"San Isidro",
+			"San Juan de Lurigancho"->"San Juan de Lurigancho",
+			"San Juan de Miraflores"->"San Juan de Miraflores",
+			"San Luis"->"San Luis",
+			"San Martin de Porres"->"San Martin de Porres",
+			"San Miguel"->"San Miguel",
+			"Santa Anita"->"Santa Anita",
+			"Santa Maria del Mar"->"Santa Maria del Mar",
+			"Santa Rosa"->"Santa Rosa",
+			"Santiago de Surco"->"Santiago de Surco",
+			"Surquillo"->"Surquillo",
+			"Villa el Salvador"->"Villa el Salvador",
+			"Villa Maria del Triunfo"->"Villa Maria del Triunfo"
+		)
+		,'_showConstraints -> false, '_label -> "Provincia"
+	)
+	@inputRadioGroup(AF("escuela"), options = options("Sistemas"->"E.A.P Sistemas","Software"->"E.A.P Software"),'_showConstraints -> false, '_label -> "Escuela Academico Profesional:")
+	@inputText(AF("user"), args = 'size -> 15,'_showConstraints -> false, '_label -> "Cuenta de Usuario:")
+	@inputPassword(AF("password"), args = 'size -> 15,'_showConstraints -> false, '_label -> "Clave de Usuario:")
+	@inputText(AF("Email"), args = 'size -> 25,'_showConstraints -> false, '_label -> "Correo Electronico:")
+	</fieldset>
+	<input type="submit" value="Registrarse"/>
+	
+	}
+
+}

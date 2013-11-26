@@ -1,0 +1,28 @@
+@(formulario: Form[auxiliar])
+
+@import helper._
+
+@implicitFieldConstructor=@{ FieldConstructor(views.html.include.constructor_field_input.render) }
+
+@main("Buscar Alumnos") {
+	
+@if(flash.containsKey("invalid")) {
+	<h3 style="color: green">
+		<image src="@routes.Assets.at("/public/images","ok.gif")">
+		@flash.get("invalid")
+	</h3>
+} 
+
+<h2> Busqueda de Alumnos  </h2>
+
+@form(routes.AlumnoController.mostrar()) {
+	<fieldset>
+		@inputText(formulario("codigo"),'_showConstraints -> false, '_label -> "Ingrese codigo del alumno :")
+	</fieldset>
+	
+	
+    <input type="submit" value="Buscar"> -
+	<a href="@routes.AlumnoController.listaAlu()"> <input type="button" value="Cancelar"> </a>
+}
+    
+}

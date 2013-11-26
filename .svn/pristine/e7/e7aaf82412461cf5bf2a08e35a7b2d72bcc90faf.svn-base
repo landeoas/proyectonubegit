@@ -1,0 +1,91 @@
+
+package views.html.admin
+
+import play.templates._
+import play.templates.TemplateMagic._
+
+import play.api.templates._
+import play.api.templates.PlayMagic._
+import models._
+import controllers._
+import java.lang._
+import java.util._
+import scala.collection.JavaConversions._
+import scala.collection.JavaConverters._
+import play.api.i18n._
+import play.core.j.PlayMagicForJava._
+import play.mvc._
+import play.data._
+import play.api.data.Field
+import play.mvc.Http.Context.Implicit._
+import views.html._
+/**/
+object index extends BaseScalaTemplate[play.api.templates.Html,Format[play.api.templates.Html]](play.api.templates.HtmlFormat) with play.api.templates.Template0[play.api.templates.Html] {
+
+    /**/
+    def apply():play.api.templates.Html = {
+        _display_ {
+
+Seq[Any](_display_(Seq[Any](/*2.2*/main("Aula Virtual")/*2.22*/ {_display_(Seq[Any](format.raw/*2.24*/("""
+    
+<h2> Inicio</h2>
+
+
+<div class="row-fluid">
+            <ul class="thumbnails">
+              <li class="span4">
+                <div class="thumbnail">
+                  <img src=""""),_display_(Seq[Any](/*11.30*/routes/*11.36*/.Assets.at("/public/images","tipos.png"))),format.raw/*11.76*/("""" alt="">
+                  <div class="caption">
+                    <h3>Gestion de Alumnos</h3>
+                    <p>Permite Editar y Eliminar alumnos</p>
+                    <p><a href=""""),_display_(Seq[Any](/*15.34*/routes/*15.40*/.AlumnoController.listaAlu())),format.raw/*15.68*/("""" class="btn btn-primary">Ingresar</a>
+                  </div>
+                </div>
+              </li>
+              <li class="span4">
+                <div class="thumbnail">
+                  <img src=""""),_display_(Seq[Any](/*21.30*/routes/*21.36*/.Assets.at("/public/images","publicar.jpg"))),format.raw/*21.79*/("""" alt="">
+                  <div class="caption">
+                    <h3>Publicar en Pantalla Principal</h3>
+                    <p>Permite Añadir, Editar y Eliminar publicaciones de la pantalla principal</p>
+                    <p><a href=""""),_display_(Seq[Any](/*25.34*/routes/*25.40*/.Administrador.publicar())),format.raw/*25.65*/("""" class="btn btn-primary">Ingresar</a>
+                  </div>
+                </div>
+              </li>
+              <li class="span4">
+                <div class="thumbnail">
+                  <img src=""""),_display_(Seq[Any](/*31.30*/routes/*31.36*/.Assets.at("/public/images","profesores.png"))),format.raw/*31.81*/("""" alt="">
+                  <div class="caption">
+                    <h3>Gestionar Profesores</h3>
+                    <p>Permite Crear, Editar y Eliminar Profesores</p>
+                    <p><a href=""""),_display_(Seq[Any](/*35.34*/routes/*35.40*/.ProfesorController.index)),format.raw/*35.65*/("""" class="btn btn-primary">Ingresar</a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+</div>
+
+
+""")))})),format.raw/*43.2*/("""
+
+"""))}
+    }
+    
+    def render(): play.api.templates.Html = apply()
+    
+    def f:(() => play.api.templates.Html) = () => apply()
+    
+    def ref: this.type = this
+
+}
+                /*
+                    -- GENERATED --
+                    DATE: Sun Nov 24 13:10:59 COT 2013
+                    SOURCE: C:/wwww/tuto/branches/HERNAN/app/views/admin/index.scala.html
+                    HASH: fe32bb383279c635df0453044e9741a1ae931266
+                    MATRIX: 802->2|830->22|869->24|1092->211|1107->217|1169->257|1397->449|1412->455|1462->483|1707->692|1722->698|1787->741|2066->984|2081->990|2128->1015|2373->1224|2388->1230|2455->1275|2695->1479|2710->1485|2757->1510|2923->1645
+                    LINES: 29->2|29->2|29->2|38->11|38->11|38->11|42->15|42->15|42->15|48->21|48->21|48->21|52->25|52->25|52->25|58->31|58->31|58->31|62->35|62->35|62->35|70->43
+                    -- GENERATED --
+                */
+            

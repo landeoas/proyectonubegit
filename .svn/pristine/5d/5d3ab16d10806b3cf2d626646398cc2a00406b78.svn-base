@@ -1,0 +1,116 @@
+2013-11-24 13:10:53,528 - [INFO] - from play in main 
+Listening for HTTP on /0:0:0:0:0:0:0:0:9000
+
+2013-11-24 13:11:03,381 - [ERROR] - from application in New I/O worker #1 
+
+
+! @6gcbgi0nm - Internal server error, for (GET) [/] ->
+
+sbt.PlayExceptions$CompilationException: Compilation error[')' expected but '.' found.]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:346) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:346) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:344) ~[na:na]
+	at scala.Either$LeftProjection.map(Either.scala:374) ~[na:na]
+	at sbt.PlayReloader$$anon$2.reload(PlayReloader.scala:344) ~[na:na]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:106) ~[play_2.10-2.1.3.jar:2.1.3]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:104) ~[play_2.10-2.1.3.jar:2.1.3]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24) ~[scala-library.jar:na]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24) ~[scala-library.jar:na]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_21]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_21]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_21]
+
+2013-11-24 13:11:03,791 - [WARN] - from play in New I/O worker #1 
+No application found at invoker init
+
+2013-11-24 13:11:40,414 - [ERROR] - from application in New I/O worker #1 
+
+
+! @6gcbgk3k9 - Internal server error, for (GET) [/] ->
+
+sbt.PlayExceptions$CompilationException: Compilation error[not enough arguments for method at: (path: String, file: String)play.api.mvc.Call.
+Unspecified value parameter file.]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:346) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:346) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:344) ~[na:na]
+	at scala.Either$LeftProjection.map(Either.scala:374) ~[na:na]
+	at sbt.PlayReloader$$anon$2.reload(PlayReloader.scala:344) ~[na:na]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:106) ~[play_2.10-2.1.3.jar:2.1.3]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:104) ~[play_2.10-2.1.3.jar:2.1.3]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24) ~[scala-library.jar:na]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24) ~[scala-library.jar:na]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_21]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_21]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_21]
+
+2013-11-24 13:12:45,175 - [ERROR] - from application in New I/O worker #1 
+
+
+! @6gcbgnlf4 - Internal server error, for (GET) [/] ->
+
+sbt.PlayExceptions$CompilationException: Compilation error[error: non-static variable fc cannot be referenced from a static context]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:346) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:346) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:344) ~[na:na]
+	at scala.Either$LeftProjection.map(Either.scala:374) ~[na:na]
+	at sbt.PlayReloader$$anon$2.reload(PlayReloader.scala:344) ~[na:na]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:106) ~[play_2.10-2.1.3.jar:2.1.3]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:104) ~[play_2.10-2.1.3.jar:2.1.3]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24) ~[scala-library.jar:na]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24) ~[scala-library.jar:na]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_21]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_21]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_21]
+
+2013-11-24 13:23:25,560 - [INFO] - from play in play-internal-execution-context-4 
+database [default] connected at jdbc:h2:mem:play
+
+2013-11-24 13:23:26,752 - [ERROR] - from application in New I/O worker #3 
+
+
+! @6gcbi88h6 - Internal server error, for (GET) [/] ->
+
+play.api.db.evolutions.InvalidDatabaseRevision: Database 'default' needs evolution![An SQL script need to be run on your database.]
+	at play.api.db.evolutions.EvolutionsPlugin$$anonfun$onStart$1$$anonfun$apply$1.apply$mcV$sp(Evolutions.scala:462) ~[play-jdbc_2.10-2.1.3.jar:2.1.3]
+	at play.api.db.evolutions.EvolutionsPlugin.withLock(Evolutions.scala:483) ~[play-jdbc_2.10-2.1.3.jar:2.1.3]
+	at play.api.db.evolutions.EvolutionsPlugin$$anonfun$onStart$1.apply(Evolutions.scala:439) ~[play-jdbc_2.10-2.1.3.jar:2.1.3]
+	at play.api.db.evolutions.EvolutionsPlugin$$anonfun$onStart$1.apply(Evolutions.scala:437) ~[play-jdbc_2.10-2.1.3.jar:2.1.3]
+	at scala.collection.immutable.List.foreach(List.scala:309) ~[scala-library.jar:na]
+	at play.api.db.evolutions.EvolutionsPlugin.onStart(Evolutions.scala:437) ~[play-jdbc_2.10-2.1.3.jar:2.1.3]
+	at play.api.Play$$anonfun$start$1$$anonfun$apply$mcV$sp$1.apply(Play.scala:68) ~[play_2.10-2.1.3.jar:2.1.3]
+	at play.api.Play$$anonfun$start$1$$anonfun$apply$mcV$sp$1.apply(Play.scala:68) ~[play_2.10-2.1.3.jar:2.1.3]
+	at scala.collection.immutable.List.foreach(List.scala:309) ~[scala-library.jar:na]
+	at play.api.Play$$anonfun$start$1.apply$mcV$sp(Play.scala:68) ~[play_2.10-2.1.3.jar:2.1.3]
+	at play.api.Play$$anonfun$start$1.apply(Play.scala:68) ~[play_2.10-2.1.3.jar:2.1.3]
+	at play.api.Play$$anonfun$start$1.apply(Play.scala:68) ~[play_2.10-2.1.3.jar:2.1.3]
+	at play.utils.Threads$.withContextClassLoader(Threads.scala:18) ~[play_2.10-2.1.3.jar:2.1.3]
+	at play.api.Play$.start(Play.scala:67) ~[play_2.10-2.1.3.jar:2.1.3]
+	at play.core.ReloadableApplication$$anonfun$get$1$$anonfun$apply$1$$anonfun$1.apply(ApplicationProvider.scala:141) ~[play_2.10-2.1.3.jar:2.1.3]
+	at play.core.ReloadableApplication$$anonfun$get$1$$anonfun$apply$1$$anonfun$1.apply(ApplicationProvider.scala:114) ~[play_2.10-2.1.3.jar:2.1.3]
+	at scala.Option.map(Option.scala:145) ~[scala-library.jar:na]
+	at play.core.ReloadableApplication$$anonfun$get$1$$anonfun$apply$1.apply(ApplicationProvider.scala:114) ~[play_2.10-2.1.3.jar:2.1.3]
+	at play.core.ReloadableApplication$$anonfun$get$1$$anonfun$apply$1.apply(ApplicationProvider.scala:112) ~[play_2.10-2.1.3.jar:2.1.3]
+	at scala.util.Either$RightProjection.flatMap(Either.scala:523) ~[scala-library.jar:na]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:112) ~[play_2.10-2.1.3.jar:2.1.3]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:104) ~[play_2.10-2.1.3.jar:2.1.3]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24) ~[scala-library.jar:na]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24) ~[scala-library.jar:na]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_21]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_21]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_21]
+

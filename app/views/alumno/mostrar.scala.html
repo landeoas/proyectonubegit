@@ -1,0 +1,54 @@
+@(alumno: Alumno)
+
+@import helper._
+
+@implicitFieldConstructor=@{ FieldConstructor(views.html.include.constructor_field_input.render) }
+
+@main("Mostrar") {
+
+<h2> Datos del Alumno:  </h2>
+
+	<<table class='webgrid'>
+	<tr class='webgrid-header'>
+		<th>Id</th>
+		<th>Codigo</th>
+		<th>Nombres</th>
+		<th>Apellidos</th>
+		<th>Genero</th>
+		<th>fecha nac.</th>
+		<th>Residencia</th>
+		<th>Provincia</th>
+		<th>Escuela</th>
+		<th>User</th>
+		<th>Password</th>
+		<th>Email</th>
+		<th>creado</th>
+		<th>modificado</th>
+	</tr>
+	 <tr class='webgrid-row-style'>
+		<td>@alumno.id</td>
+		<td>@alumno.codigo</td>
+		<td>@alumno.nombres</td>
+		<td>@alumno.apellidos</td>
+		<td>@alumno.genero</td>
+		<td>@alumno.fecha</td>
+		<td>@alumno.residencia</td>
+		<td>@alumno.provincia</td>
+		<td>@alumno.escuela</td>
+		<td>@alumno.user</td>
+		<td>@alumno.password</td>
+		<td>@alumno.email</td>
+		<td>@alumno.created.format("dd/MM/yyyy - hh:mm")</td>
+		<td>@alumno.updated.format("dd/MM/yyyy - hh:mm")</td>
+		<td><a href="@routes.AlumnoController.edit_perfil(alumno.id)"> <input type="button" value="Editar"> </a></td>
+		<td>
+			@form(routes.AlumnoController.delete(alumno.id)) {
+				<input type="submit" value="Eliminar">
+			}
+		</td>
+		
+	</tr>
+
+</table>
+	<a href="@routes.AlumnoController.buscar()"> <input type="button" value="Regresar"> </a>
+}

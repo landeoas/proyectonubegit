@@ -1,0 +1,128 @@
+
+package views.html.alumno
+
+import play.templates._
+import play.templates.TemplateMagic._
+
+import play.api.templates._
+import play.api.templates.PlayMagic._
+import models._
+import controllers._
+import java.lang._
+import java.util._
+import scala.collection.JavaConversions._
+import scala.collection.JavaConverters._
+import play.api.i18n._
+import play.core.j.PlayMagicForJava._
+import play.mvc._
+import play.data._
+import play.api.data.Field
+import play.mvc.Http.Context.Implicit._
+import views.html._
+/**/
+object create extends BaseScalaTemplate[play.api.templates.Html,Format[play.api.templates.Html]](play.api.templates.HtmlFormat) with play.api.templates.Template1[Form[Alumno],play.api.templates.Html] {
+
+    /**/
+    def apply/*1.2*/(AF: Form[Alumno]):play.api.templates.Html = {
+        _display_ {import helper._
+
+implicit def /*5.2*/implicitFieldConstructor/*5.26*/ = {{ FieldConstructor(views.html.include.constructor_field_input.render) }};
+Seq[Any](format.raw/*1.20*/("""
+
+"""),format.raw/*4.1*/("""
+"""),format.raw/*5.99*/("""
+
+
+"""),_display_(Seq[Any](/*8.2*/main("FORMULARIO NUEVO USUARIO")/*8.34*/ {_display_(Seq[Any](format.raw/*8.36*/("""
+
+"""),_display_(Seq[Any](/*10.2*/form(routes.AlumnoController.save())/*10.38*/{_display_(Seq[Any](format.raw/*10.39*/("""
+	<fieldset>
+	"""),_display_(Seq[Any](/*12.3*/inputText(AF("codigo"), args = 'size -> 5,'_showConstraints -> false, '_label -> "Codigo:"))),format.raw/*12.94*/("""
+	"""),_display_(Seq[Any](/*13.3*/inputText(AF("nombres"), args = 'size -> 15,'_showConstraints -> false, '_label -> "Nombres:"))),format.raw/*13.97*/("""
+	"""),_display_(Seq[Any](/*14.3*/inputText(AF("apellidos"), args = 'size -> 15,'_showConstraints -> false, '_label -> "Apellidos:"))),format.raw/*14.101*/("""
+	"""),_display_(Seq[Any](/*15.3*/select(AF("genero"), 
+		options = options(
+			"Masculino"->"Masculino",
+			"Femenino"->"Femenino"
+			)
+		,'_showConstraints -> false, '_label -> "Genero:"		
+	))),format.raw/*21.3*/("""
+	"""),_display_(Seq[Any](/*22.3*/inputDate(AF("fecha"), args = 'size -> 15,'_showConstraints -> false, '_label -> "Fecha de Nacimiento"))),format.raw/*22.106*/("""
+	"""),_display_(Seq[Any](/*23.3*/inputText(AF("residencia"), args = 'size -> 30,'_showConstraints -> false, '_label -> "Residencia"))),format.raw/*23.102*/("""
+	"""),_display_(Seq[Any](/*24.3*/select(AF("provincia"), 
+		options = options(
+			"Ancon"->"Ancon",
+			"Ate"->"Ate",
+			"Bre�a"->"Brena",
+			"Carabayllo"->"Carabayllo",
+			"Cercado de Lima"->"Cercado de Lima",
+			"Chaclacayo"->"Chaclacayo",
+			"Chorrillos"->"Chorrillos",
+			"Cieneguilla"->"Cieneguilla",
+			"Comas"->"Comas",
+			"El Agustino"->"El Agustino",
+			"Independencia"->"Independencia",
+			"Jesus Maria"->"Jesus Maria",
+			"La Molina"->"La Molina",
+			"La Victoria"->"La Victoria",
+			"Lince"->"Lince",
+			"Los Olivos"->"Los Olivos",
+			"Lurigancho-Chosica"->"Lurigancho-Chosica",
+			"Lurin"->"Lurin",
+			"Magdalena del Mar"->"Magdalena del Mar",
+			"Pueblo Libre"->"Pueblo Libre",
+			"Miraflores"->"Miraflores",
+			"Pachacamac"->"Pachacamac",
+			"Pucusana"->"Pucusana",
+			"Puente Piedra"->"Puente Piedra",
+			"Punta Hermosa"->"Punta Hermosa",
+			"Punta Negra"->"Punta Negra",
+			"Rimac"->"Rimac",
+			"San Bartolo"->"San Bartolo",
+			"San Borja"->"San Borja",
+			"San Isidro"->"San Isidro",
+			"San Juan de Lurigancho"->"San Juan de Lurigancho",
+			"San Juan de Miraflores"->"San Juan de Miraflores",
+			"San Luis"->"San Luis",
+			"San Martin de Porres"->"San Martin de Porres",
+			"San Miguel"->"San Miguel",
+			"Santa Anita"->"Santa Anita",
+			"Santa Maria del Mar"->"Santa Maria del Mar",
+			"Santa Rosa"->"Santa Rosa",
+			"Santiago de Surco"->"Santiago de Surco",
+			"Surquillo"->"Surquillo",
+			"Villa el Salvador"->"Villa el Salvador",
+			"Villa Maria del Triunfo"->"Villa Maria del Triunfo"
+		)
+		,'_showConstraints -> false, '_label -> "Provincia"
+	))),format.raw/*70.3*/("""
+	"""),_display_(Seq[Any](/*71.3*/inputRadioGroup(AF("escuela"), options = options("Sistemas"->"E.A.P Sistemas","Software"->"E.A.P Software"),'_showConstraints -> false, '_label -> "Escuela Academico Profesional:"))),format.raw/*71.183*/("""
+	"""),_display_(Seq[Any](/*72.3*/inputText(AF("user"), args = 'size -> 15,'_showConstraints -> false, '_label -> "Cuenta de Usuario:"))),format.raw/*72.104*/("""
+	"""),_display_(Seq[Any](/*73.3*/inputPassword(AF("password"), args = 'size -> 15,'_showConstraints -> false, '_label -> "Clave de Usuario:"))),format.raw/*73.111*/("""
+	"""),_display_(Seq[Any](/*74.3*/inputText(AF("Email"), args = 'size -> 25,'_showConstraints -> false, '_label -> "Correo Electronico:"))),format.raw/*74.106*/("""
+	</fieldset>
+	<input type="submit" value="Registrarse"/>
+	
+	""")))})),format.raw/*78.3*/("""
+
+""")))})),format.raw/*80.2*/("""
+"""))}
+    }
+    
+    def render(AF:Form[Alumno]): play.api.templates.Html = apply(AF)
+    
+    def f:((Form[Alumno]) => play.api.templates.Html) = (AF) => apply(AF)
+    
+    def ref: this.type = this
+
+}
+                /*
+                    -- GENERATED --
+                    DATE: Fri Nov 22 22:48:29 COT 2013
+                    SOURCE: C:/wwww/tuto/branches/HERNAN/app/views/alumno/create.scala.html
+                    HASH: a4fa1600325c22d6a2a00927f8cfa7c0de49e2f8
+                    MATRIX: 737->1|840->40|872->64|977->19|1005->38|1033->137|1071->141|1111->173|1150->175|1188->178|1233->214|1272->215|1322->230|1435->321|1473->324|1589->418|1627->421|1748->519|1786->522|1966->681|2004->684|2130->787|2168->790|2290->889|2328->892|3884->2427|3922->2430|4125->2610|4163->2613|4287->2714|4325->2717|4456->2825|4494->2828|4620->2931|4713->2993|4747->2996
+                    LINES: 26->1|29->5|29->5|30->1|32->4|33->5|36->8|36->8|36->8|38->10|38->10|38->10|40->12|40->12|41->13|41->13|42->14|42->14|43->15|49->21|50->22|50->22|51->23|51->23|52->24|98->70|99->71|99->71|100->72|100->72|101->73|101->73|102->74|102->74|106->78|108->80
+                    -- GENERATED --
+                */
+            

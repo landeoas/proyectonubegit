@@ -1,0 +1,44 @@
+@(profesor: Profesor)
+
+@import helper._
+
+@implicitFieldConstructor=@{ FieldConstructor(views.html.include.constructor_field_input.render) }
+
+@main("Mostrar") {
+
+<h2> Datos del Profesor:  </h2>
+
+	<table class="table table-bordered table-hover">
+		<thead>
+	<tr >
+		<th>ID</th>
+		<th>DNI</th>
+		<th>Nombres</th>
+		<th>Apellidos</th>
+		<th>fecha nac.</th>
+		<th>email</th>
+		<th>creado</th>
+		<th>modificado</th>
+	</tr>
+</thead>
+<tbody>
+		<td>@profesor.id</td>
+		<td>@profesor.dni</td>
+		<td>@profesor.nombres</td>
+		<td>@profesor.apellidos</td>
+		<td>@profesor.fecha.format("dd/MM/yyyy")</td>
+		<td>@profesor.email</td>
+		<td>@profesor.created.format("dd/MM/yyyy")</td>
+		<td>@profesor.updated.format("dd/MM/yyyy")</td>
+		<td><a href="@routes.ProfesorController.edit(profesor.id)"> <input type="button" value="Editar"> </a></td>
+		<td>
+			@form(routes.ProfesorController.delete(profesor.id)) {
+				<input type="submit" value="Eliminar">
+			}
+		</td>	
+	</tr>
+	</tbody>
+</table>
+	<a href="@routes.ProfesorController.buscar()"> <input type="button" value="Regresar"> </a>
+}
+    

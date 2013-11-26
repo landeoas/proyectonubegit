@@ -1,0 +1,77 @@
+
+package views.html.home
+
+import play.templates._
+import play.templates.TemplateMagic._
+
+import play.api.templates._
+import play.api.templates.PlayMagic._
+import models._
+import controllers._
+import java.lang._
+import java.util._
+import scala.collection.JavaConversions._
+import scala.collection.JavaConverters._
+import play.api.i18n._
+import play.core.j.PlayMagicForJava._
+import play.mvc._
+import play.data._
+import play.api.data.Field
+import play.mvc.Http.Context.Implicit._
+import views.html._
+/**/
+object login extends BaseScalaTemplate[play.api.templates.Html,Format[play.api.templates.Html]](play.api.templates.HtmlFormat) with play.api.templates.Template1[Form[Login],play.api.templates.Html] {
+
+    /**/
+    def apply/*1.2*/(formulario: Form[Login]):play.api.templates.Html = {
+        _display_ {import helper._
+
+implicit def /*5.2*/implicitFieldConstructor/*5.26*/ = {{ FieldConstructor(views.html.include.constructor_field_input.render) }};
+Seq[Any](format.raw/*1.27*/("""
+
+"""),format.raw/*4.1*/("""
+"""),format.raw/*5.99*/("""
+
+"""),_display_(Seq[Any](/*7.2*/main("Aula Virtual")/*7.22*/ {_display_(Seq[Any](format.raw/*7.24*/("""
+
+<h2> <image src=""""),_display_(Seq[Any](/*9.19*/routes/*9.25*/.Assets.at("/public/images","llave.png"))),format.raw/*9.65*/(""""> Ingreso al Sistema </h2>
+
+"""),_display_(Seq[Any](/*11.2*/if(flash.containsKey("invalid"))/*11.34*/ {_display_(Seq[Any](format.raw/*11.36*/("""
+	<h4 style="color: red">
+		"""),_display_(Seq[Any](/*13.4*/flash/*13.9*/.get("invalid"))),format.raw/*13.24*/("""
+	</h4>
+""")))})),format.raw/*15.2*/("""
+
+"""),_display_(Seq[Any](/*17.2*/form(routes.Home.ingresar())/*17.30*/ {_display_(Seq[Any](format.raw/*17.32*/("""
+	<fieldset>
+		"""),_display_(Seq[Any](/*19.4*/inputText(formulario("login"),'_showConstraints -> false,'_label ->"Usuario:"))),format.raw/*19.82*/("""
+		"""),_display_(Seq[Any](/*20.4*/inputPassword(formulario("clave"),'_showConstraints -> false,'_label ->"Clave:"))),format.raw/*20.84*/("""
+	</fieldset>
+    
+    <button class= "btn">Ingresar</button>
+    
+	
+""")))})),format.raw/*26.2*/("""
+<a href=""""),_display_(Seq[Any](/*27.11*/routes/*27.17*/.AlumnoController.create)),format.raw/*27.41*/(""""><button class= "btn">Registrarse Si es Nuevo</button></a>
+    
+""")))})),format.raw/*29.2*/("""
+"""))}
+    }
+    
+    def render(formulario:Form[Login]): play.api.templates.Html = apply(formulario)
+    
+    def f:((Form[Login]) => play.api.templates.Html) = (formulario) => apply(formulario)
+    
+    def ref: this.type = this
+
+}
+                /*
+                    -- GENERATED --
+                    DATE: Sun Nov 24 13:11:33 COT 2013
+                    SOURCE: C:/wwww/tuto/branches/HERNAN/app/views/home/login.scala.html
+                    HASH: 8e3a41534501f8c2dc4eb03fb113eaf01675b3b2
+                    MATRIX: 733->1|843->47|875->71|980->26|1008->45|1036->144|1073->147|1101->167|1140->169|1195->189|1209->195|1270->235|1335->265|1376->297|1416->299|1480->328|1493->333|1530->348|1570->357|1608->360|1645->388|1685->390|1736->406|1836->484|1875->488|1977->568|2078->638|2125->649|2140->655|2186->679|2283->745
+                    LINES: 26->1|29->5|29->5|30->1|32->4|33->5|35->7|35->7|35->7|37->9|37->9|37->9|39->11|39->11|39->11|41->13|41->13|41->13|43->15|45->17|45->17|45->17|47->19|47->19|48->20|48->20|54->26|55->27|55->27|55->27|57->29
+                    -- GENERATED --
+                */
+            

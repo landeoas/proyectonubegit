@@ -1,0 +1,18 @@
+@(curso : Curso,formulario : Form[Clase])
+
+@import helper._
+
+@implicitFieldConstructor=@{ FieldConstructor(views.html.include.constructor_field_input.render) }
+
+@main("AULA VIRTUAL FISI") {
+	<h2>Nueva Clase para el curso de @curso.name</h2>
+	
+	@form(routes.ProfesorController.save_clase(curso.id)) {
+		<fieldset>
+		@inputText(formulario("titulo"),'_showConstraints -> false,'_label -> "Titulo de la Clase:")
+		@textarea(formulario("descripcion"),args = 'rows -> 10, 'cols -> 400,'_showConstraints -> false,'_label -> "Descripcion de la Clase:")
+		</fieldset>
+    	<input type="submit" value="Crear Curso">
+		<a href="@routes.ProfesorController.gestion_curso(curso.id)"> <input type="button" value="Cancelar"> </a>
+	}	
+}

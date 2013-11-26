@@ -1,0 +1,23 @@
+@(id: Long, Log: Form[Login])
+
+@import helper._
+
+@implicitFieldConstructor=@{ FieldConstructor(views.html.include.constructor_field_input.render) }
+
+@main("Aula Virtual") {
+
+	<h2> Editar Clave de Acceso </h2>
+
+	@form(routes.AlumnoController.update_password(id)) {
+		@inputPassword(Log("clave_act"), args = 'size -> 15,'_showConstraints -> false, '_label -> "Clave Actual:")
+		@inputPassword(Log("clave_new"), args = 'size -> 15,'_showConstraints -> false, '_label -> "Nueva Clave de Usuario:")
+		@inputPassword(Log("clave_rep"), args = 'size -> 15,'_showConstraints -> false, '_label -> "Confirmar Nueva Clave:")
+		<input type="submit" value="Guardar">
+		
+		@if(session.get("user") == "Admin"){ 
+			<a href="@routes.ProfesorController.index"> <input type="button" value="Cancelar"> </a>
+		}else{
+			<a href="@routes.Home.inicio_alumno()"><input type ="button" value="Cancelar"> </a>
+		}
+	}
+}

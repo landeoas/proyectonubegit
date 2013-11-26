@@ -1,0 +1,46 @@
+
+@(curso: Curso,clases : List[Clase])
+
+@import helper._
+
+@implicitFieldConstructor=@{ FieldConstructor(views.html.include.constructor_field_input.render) }
+
+@main("AULA VIRTUAL FISI") {
+	<h1>@curso.name</h1>
+	<h2>Clases</h2>
+	
+	<a href="@routes.ProfesorController.create_clase(curso.id)"><input type="button" value="Nueva Clase"></a>
+	
+	<table class="table table-bordered">
+		<tr>
+			<th>Titulo</th>
+			<th>Descripcion</th>
+			<th>Fecha de publicacion</th>
+			@*<th>Grupo</th>*@
+			@if(session.get("user")== "Admin"){
+				<td>Profesor</td>
+			}else{
+				<th>Acciones</th>
+			}
+		</tr>
+
+		@for(clase <- clases) {
+		<tr>
+			<td>@clase.titulo</td>
+			<td>@clase.descripcion</td>
+			<td>@clase.updated</td>
+			@if(session.get("user")== "Admin"){
+				<td>@curso.profesor</td>
+			}
+			<td><a href="@routes.ProfesorController.download_clase(clase.id)"><input type="button" value="Descargar"></a>
+			@if(session.get("tipoU")=="Profesor"){
+				<td><a href="@routes.ProfesorController.edit_clase(clase.id)"><input type="button" value="Modificar"></a>
+				<td><a href="@routes.ProfesorController.delete_clase(clase.id)"><input type="button" value="Eliminar"></a>
+			}
+			
+		</tr>
+		}
+	</table>
+	
+
+}

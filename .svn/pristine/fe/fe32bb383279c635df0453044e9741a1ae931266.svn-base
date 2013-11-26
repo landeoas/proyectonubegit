@@ -1,0 +1,44 @@
+
+@main("Aula Virtual") {
+    
+<h2> Inicio</h2>
+
+
+<div class="row-fluid">
+            <ul class="thumbnails">
+              <li class="span4">
+                <div class="thumbnail">
+                  <img src="@routes.Assets.at("/public/images","tipos.png")" alt="">
+                  <div class="caption">
+                    <h3>Gestion de Alumnos</h3>
+                    <p>Permite Editar y Eliminar alumnos</p>
+                    <p><a href="@routes.AlumnoController.listaAlu()" class="btn btn-primary">Ingresar</a>
+                  </div>
+                </div>
+              </li>
+              <li class="span4">
+                <div class="thumbnail">
+                  <img src="@routes.Assets.at("/public/images","publicar.jpg")" alt="">
+                  <div class="caption">
+                    <h3>Publicar en Pantalla Principal</h3>
+                    <p>Permite Añadir, Editar y Eliminar publicaciones de la pantalla principal</p>
+                    <p><a href="@routes.Administrador.publicar()" class="btn btn-primary">Ingresar</a>
+                  </div>
+                </div>
+              </li>
+              <li class="span4">
+                <div class="thumbnail">
+                  <img src="@routes.Assets.at("/public/images","profesores.png")" alt="">
+                  <div class="caption">
+                    <h3>Gestionar Profesores</h3>
+                    <p>Permite Crear, Editar y Eliminar Profesores</p>
+                    <p><a href="@routes.ProfesorController.index" class="btn btn-primary">Ingresar</a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+</div>
+
+
+}
+

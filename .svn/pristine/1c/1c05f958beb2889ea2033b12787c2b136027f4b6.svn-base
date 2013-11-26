@@ -1,0 +1,23 @@
+@(id: Long, formulario: Form[Noticia])
+
+@import helper._
+
+@implicitFieldConstructor=@{ FieldConstructor(views.html.include.constructor_field_input.render) }
+
+@main("Control Acceso Usuarios") {
+
+<h2> Editar Opcion de Menu </h2>
+
+@form(routes.Administrador.update(id)) {
+	<fieldset>
+		@inputText(formulario("titulo"), 'readonly -> "readonly",'_label -> "Titulo:")
+		@textarea(formulario("Contenido"),'_showConstraints -> false,'_label -> "Contenido:")
+		@inputText(formulario("imagen"),'_showConstraints -> false, '_label -> "Imagen :")
+		@inputRadioGroup(formulario("escuela"), options = options("Sistemas"->"E.A.P Sistemas","Software"->"E.A.P Software","Comunidad Fisi"->"Comunidad Fisi"),'_showConstraints -> false, '_label -> "Escuela Academico Profesional:",'_showConstraints -> false,'_label -> "Accion :")
+	</fieldset>
+
+    <input type="submit" value="Guardar"> -
+	<a href="@routes.Administrador.index"> <input type="button" value="Cancelar"> </a>
+}
+    
+}

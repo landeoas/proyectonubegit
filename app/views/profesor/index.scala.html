@@ -1,0 +1,52 @@
+@(lista: List[Profesor])
+
+@import helper._
+
+
+@main("Lista Profesores") {
+    
+<h2> <image src="@routes.Assets.at("/public/images","menu.png")"> Lista de Profesores </h2>
+
+@if(flash.containsKey("success")) {
+	<h3 style="color: green">
+		<image src="@routes.Assets.at("/public/images","ok.gif")">
+		@flash.get("success")
+	</h3>
+} 
+
+<table class="table table-bordered">
+	<tr >
+		<th>ID</th>
+		<th>DNI</th>
+		<th>Nombres</th>
+		<th>Apellidos</th>
+		<th>fecha nac.</th>
+		<th>email</th>
+		<th>creado</th>
+		<th>modificado</th>
+	</tr>
+
+	@for(registro <- lista) {
+	<tr >
+		<td>@registro.id</td>
+		<td>@registro.dni</td>
+		<td>@registro.nombres</td>
+		<td>@registro.apellidos</td>
+		<td>@registro.fecha.format("dd/MM/yyyy")</td>
+		<td>@registro.email</td>
+		<td>@registro.created.format("dd/MM/yyyy")</td>
+		<td>@registro.updated.format("dd/MM/yyyy")</td>
+		<td><a href="@routes.ProfesorController.edit(registro.id)"> <input type="button" value="Editar"> </a></td>
+		<td>
+			@form(routes.ProfesorController.delete(registro.id)) {
+				<input type="submit" value="Eliminar">
+			}
+		</td>
+		
+	</tr>
+	}
+</table>
+
+<a href="@routes.ProfesorController.create()"> <input type="button" value="Crear"> </a>
+<a href="@routes.ProfesorController.buscar()"> <input type="button" value="Buscar"> </a>
+}

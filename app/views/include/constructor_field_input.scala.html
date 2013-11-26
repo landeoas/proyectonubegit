@@ -1,0 +1,4 @@
+@(elements: helper.FieldElements)
+<span class="clearfix @if(elements.hasErrors) {error}">
+	<label style="white-space: pre" for="@elements.id">@elements.label</label>@elements.input.@elements.errors.mkString(", ")
+</span>

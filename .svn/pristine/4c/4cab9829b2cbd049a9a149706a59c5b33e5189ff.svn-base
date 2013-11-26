@@ -1,0 +1,104 @@
+
+package views.html.alumno
+
+import play.templates._
+import play.templates.TemplateMagic._
+
+import play.api.templates._
+import play.api.templates.PlayMagic._
+import models._
+import controllers._
+import java.lang._
+import java.util._
+import scala.collection.JavaConversions._
+import scala.collection.JavaConverters._
+import play.api.i18n._
+import play.core.j.PlayMagicForJava._
+import play.mvc._
+import play.data._
+import play.api.data.Field
+import play.mvc.Http.Context.Implicit._
+import views.html._
+/**/
+object listaAlu extends BaseScalaTemplate[play.api.templates.Html,Format[play.api.templates.Html]](play.api.templates.HtmlFormat) with play.api.templates.Template1[List[Alumno],play.api.templates.Html] {
+
+    /**/
+    def apply/*1.2*/(lista: List[Alumno]):play.api.templates.Html = {
+        _display_ {import helper._
+
+
+Seq[Any](format.raw/*1.23*/("""
+
+"""),format.raw/*4.1*/("""
+
+"""),_display_(Seq[Any](/*6.2*/main("Gestion de Alumnos")/*6.28*/ {_display_(Seq[Any](format.raw/*6.30*/("""
+    
+<h2> <image src=""""),_display_(Seq[Any](/*8.19*/routes/*8.25*/.Assets.at("/public/images","menu.png"))),format.raw/*8.64*/(""""> Lista de Alumnos </h2>
+
+"""),_display_(Seq[Any](/*10.2*/if(flash.containsKey("success"))/*10.34*/ {_display_(Seq[Any](format.raw/*10.36*/("""
+	<h3 style="color: green">
+		<image src=""""),_display_(Seq[Any](/*12.16*/routes/*12.22*/.Assets.at("/public/images","ok.gif"))),format.raw/*12.59*/("""">
+		"""),_display_(Seq[Any](/*13.4*/flash/*13.9*/.get("success"))),format.raw/*13.24*/("""
+	</h3>
+""")))})),format.raw/*15.2*/(""" 
+
+<table class="table table-bordered">
+	<tr >
+		<th>Id</th>
+		<th>Codigo</th>
+		<th>Nombres</th>
+		<th>Apellidos</th>
+		<th>fecha nac.</th>
+		<th>Escuela</th>
+		<th>User</th>
+		<th>Password</th>
+		<th>Email</th>
+		<th>creado</th>
+		<th>modificado</th>
+	</tr>
+
+	"""),_display_(Seq[Any](/*32.3*/for(alumno <- lista) yield /*32.23*/ {_display_(Seq[Any](format.raw/*32.25*/("""
+	<tr >
+		<td>"""),_display_(Seq[Any](/*34.8*/alumno/*34.14*/.id)),format.raw/*34.17*/("""</td>
+		<td>"""),_display_(Seq[Any](/*35.8*/alumno/*35.14*/.codigo)),format.raw/*35.21*/("""</td>
+		<td>"""),_display_(Seq[Any](/*36.8*/alumno/*36.14*/.nombres)),format.raw/*36.22*/("""</td>
+		<td>"""),_display_(Seq[Any](/*37.8*/alumno/*37.14*/.apellidos)),format.raw/*37.24*/("""</td>
+		<td>"""),_display_(Seq[Any](/*38.8*/alumno/*38.14*/.fecha.format("dd/MM/yyyy"))),format.raw/*38.41*/("""</td>
+		<td>"""),_display_(Seq[Any](/*39.8*/alumno/*39.14*/.escuela)),format.raw/*39.22*/("""</td>
+		<td>"""),_display_(Seq[Any](/*40.8*/alumno/*40.14*/.user)),format.raw/*40.19*/("""</td>
+		<td>"""),_display_(Seq[Any](/*41.8*/alumno/*41.14*/.password)),format.raw/*41.23*/("""</td>
+		<td>"""),_display_(Seq[Any](/*42.8*/alumno/*42.14*/.email)),format.raw/*42.20*/("""</td>
+		<td>"""),_display_(Seq[Any](/*43.8*/alumno/*43.14*/.created.format("dd/MM/yyyy"))),format.raw/*43.43*/("""</td>
+		<td>"""),_display_(Seq[Any](/*44.8*/alumno/*44.14*/.updated.format("dd/MM/yyyy"))),format.raw/*44.43*/("""</td>
+		<td><a href=""""),_display_(Seq[Any](/*45.17*/routes/*45.23*/.AlumnoController.edit_perfil(alumno.id))),format.raw/*45.63*/(""""> <input type="button" value="Editar"> </a></td>
+		<td>
+			"""),_display_(Seq[Any](/*47.5*/form(routes.AlumnoController.delete(alumno.id))/*47.52*/ {_display_(Seq[Any](format.raw/*47.54*/("""
+				<input type="submit" value="Eliminar">
+			""")))})),format.raw/*49.5*/("""
+		</td>
+		
+	</tr>
+	""")))})),format.raw/*53.3*/("""
+</table>
+
+<a href=""""),_display_(Seq[Any](/*56.11*/routes/*56.17*/.AlumnoController.buscar())),format.raw/*56.43*/(""""> <input type="button" value="Buscar"> </a>
+""")))})))}
+    }
+    
+    def render(lista:List[Alumno]): play.api.templates.Html = apply(lista)
+    
+    def f:((List[Alumno]) => play.api.templates.Html) = (lista) => apply(lista)
+    
+    def ref: this.type = this
+
+}
+                /*
+                    -- GENERATED --
+                    DATE: Sun Nov 24 13:10:59 COT 2013
+                    SOURCE: C:/wwww/tuto/branches/HERNAN/app/views/alumno/listaAlu.scala.html
+                    HASH: 14cae25e53ee8fbc1f1be90a2e992ef5c0161725
+                    MATRIX: 739->1|853->22|881->41|918->44|952->70|991->72|1050->96|1064->102|1124->141|1187->169|1228->201|1268->203|1347->246|1362->252|1421->289|1462->295|1475->300|1512->315|1552->324|1850->587|1886->607|1926->609|1976->624|1991->630|2016->633|2064->646|2079->652|2108->659|2156->672|2171->678|2201->686|2249->699|2264->705|2296->715|2344->728|2359->734|2408->761|2456->774|2471->780|2501->788|2549->801|2564->807|2591->812|2639->825|2654->831|2685->840|2733->853|2748->859|2776->865|2824->878|2839->884|2890->913|2938->926|2953->932|3004->961|3062->983|3077->989|3139->1029|3235->1090|3291->1137|3331->1139|3410->1187|3462->1208|3519->1229|3534->1235|3582->1261
+                    LINES: 26->1|30->1|32->4|34->6|34->6|34->6|36->8|36->8|36->8|38->10|38->10|38->10|40->12|40->12|40->12|41->13|41->13|41->13|43->15|60->32|60->32|60->32|62->34|62->34|62->34|63->35|63->35|63->35|64->36|64->36|64->36|65->37|65->37|65->37|66->38|66->38|66->38|67->39|67->39|67->39|68->40|68->40|68->40|69->41|69->41|69->41|70->42|70->42|70->42|71->43|71->43|71->43|72->44|72->44|72->44|73->45|73->45|73->45|75->47|75->47|75->47|77->49|81->53|84->56|84->56|84->56
+                    -- GENERATED --
+                */
+            

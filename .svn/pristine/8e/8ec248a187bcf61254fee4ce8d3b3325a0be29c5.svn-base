@@ -1,0 +1,28 @@
+// @SOURCE:C:/wwww/tuto/branches/HERNAN/conf/routes
+// @HASH:4990e36fc3942ca11578f89029de24582c3c7716
+// @DATE:Sun Nov 24 13:10:58 COT 2013
+
+package controllers;
+
+public class routes {
+public static final controllers.ReverseAssets Assets = new controllers.ReverseAssets();
+public static final controllers.ReverseHome Home = new controllers.ReverseHome();
+public static final controllers.ReverseProfesorController ProfesorController = new controllers.ReverseProfesorController();
+public static final controllers.ReverseAdministrador Administrador = new controllers.ReverseAdministrador();
+public static final controllers.ReverseAlumnoController AlumnoController = new controllers.ReverseAlumnoController();
+public static class javascript {
+public static final controllers.javascript.ReverseAssets Assets = new controllers.javascript.ReverseAssets();
+public static final controllers.javascript.ReverseHome Home = new controllers.javascript.ReverseHome();
+public static final controllers.javascript.ReverseProfesorController ProfesorController = new controllers.javascript.ReverseProfesorController();
+public static final controllers.javascript.ReverseAdministrador Administrador = new controllers.javascript.ReverseAdministrador();
+public static final controllers.javascript.ReverseAlumnoController AlumnoController = new controllers.javascript.ReverseAlumnoController();    
+}   
+public static class ref {
+public static final controllers.ref.ReverseAssets Assets = new controllers.ref.ReverseAssets();
+public static final controllers.ref.ReverseHome Home = new controllers.ref.ReverseHome();
+public static final controllers.ref.ReverseProfesorController ProfesorController = new controllers.ref.ReverseProfesorController();
+public static final controllers.ref.ReverseAdministrador Administrador = new controllers.ref.ReverseAdministrador();
+public static final controllers.ref.ReverseAlumnoController AlumnoController = new controllers.ref.ReverseAlumnoController();    
+} 
+}
+              

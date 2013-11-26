@@ -1,0 +1,640 @@
+// @SOURCE:C:/wwww/tuto/branches/HERNAN/conf/routes
+// @HASH:4990e36fc3942ca11578f89029de24582c3c7716
+// @DATE:Sun Nov 24 13:10:58 COT 2013
+
+
+import play.core._
+import play.core.Router._
+import play.core.j._
+
+import play.api.mvc._
+import play.libs.F
+
+import Router.queryString
+
+object Routes extends Router.Routes {
+
+private var _prefix = "/"
+
+def setPrefix(prefix: String) {
+  _prefix = prefix  
+  List[(String,Routes)]().foreach {
+    case (p, router) => router.setPrefix(prefix + (if(prefix.endsWith("/")) "" else "/") + p)
+  }
+}
+
+def prefix = _prefix
+
+lazy val defaultPrefix = { if(Routes.prefix.endsWith("/")) "" else "/" } 
+
+
+// @LINE:6
+private[this] lazy val controllers_Home_welcome0 = Route("GET", PathPattern(List(StaticPart(Routes.prefix))))
+        
+
+// @LINE:7
+private[this] lazy val controllers_Home_acerca_de1 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("acerca_de"))))
+        
+
+// @LINE:8
+private[this] lazy val controllers_Home_salir2 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("home/salir"))))
+        
+
+// @LINE:9
+private[this] lazy val controllers_Home_login3 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("home/ingresar"))))
+        
+
+// @LINE:10
+private[this] lazy val controllers_Home_ingresar4 = Route("POST", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("home/ingresar"))))
+        
+
+// @LINE:11
+private[this] lazy val controllers_Home_inicio_alumno5 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("home/InicioAlumno"))))
+        
+
+// @LINE:14
+private[this] lazy val controllers_Administrador_index6 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("admin/index"))))
+        
+
+// @LINE:15
+private[this] lazy val controllers_Administrador_publicar7 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("admin/publicar"))))
+        
+
+// @LINE:16
+private[this] lazy val controllers_Administrador_create8 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("admin/publicar/new"))))
+        
+
+// @LINE:17
+private[this] lazy val controllers_Administrador_save9 = Route("POST", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("admin/publicar/new"))))
+        
+
+// @LINE:18
+private[this] lazy val controllers_Administrador_edit10 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("admin/publicar/editar/"),DynamicPart("id", """[^/]+""",true))))
+        
+
+// @LINE:19
+private[this] lazy val controllers_Administrador_update11 = Route("POST", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("admin/publicar/editar/"),DynamicPart("id", """[^/]+""",true))))
+        
+
+// @LINE:20
+private[this] lazy val controllers_Administrador_delete12 = Route("POST", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("admin/publicar/delete/"),DynamicPart("id", """[^/]+""",true))))
+        
+
+// @LINE:23
+private[this] lazy val controllers_AlumnoController_listaAlu13 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("alumno/listaAlu"))))
+        
+
+// @LINE:24
+private[this] lazy val controllers_AlumnoController_lista_cursos14 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("curso/listaCursos"))))
+        
+
+// @LINE:25
+private[this] lazy val controllers_AlumnoController_create15 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("alumno/new"))))
+        
+
+// @LINE:26
+private[this] lazy val controllers_AlumnoController_save16 = Route("POST", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("alumno/new"))))
+        
+
+// @LINE:27
+private[this] lazy val controllers_AlumnoController_editar_perfil17 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("home/perfil"))))
+        
+
+// @LINE:28
+private[this] lazy val controllers_AlumnoController_edit_perfil18 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("alumno/perfil/"),DynamicPart("id", """[^/]+""",true))))
+        
+
+// @LINE:29
+private[this] lazy val controllers_AlumnoController_update_perfil19 = Route("POST", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("alumno/perfil/"),DynamicPart("id", """[^/]+""",true))))
+        
+
+// @LINE:30
+private[this] lazy val controllers_AlumnoController_editar_password20 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("alumno/password/"))))
+        
+
+// @LINE:31
+private[this] lazy val controllers_AlumnoController_edit_password21 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("alumno/password/"),DynamicPart("id", """[^/]+""",true))))
+        
+
+// @LINE:32
+private[this] lazy val controllers_AlumnoController_update_password22 = Route("POST", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("alumno/password/"),DynamicPart("id", """[^/]+""",true))))
+        
+
+// @LINE:33
+private[this] lazy val controllers_AlumnoController_delete23 = Route("POST", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("delete/"),DynamicPart("id", """[^/]+""",true))))
+        
+
+// @LINE:34
+private[this] lazy val controllers_AlumnoController_buscar24 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("alumno/buscar/"))))
+        
+
+// @LINE:35
+private[this] lazy val controllers_AlumnoController_mostrar25 = Route("POST", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("alumno/buscar/"))))
+        
+
+// @LINE:36
+private[this] lazy val controllers_AlumnoController_buscar_curso26 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("alumno/buscar_curso/"))))
+        
+
+// @LINE:37
+private[this] lazy val controllers_AlumnoController_mostrar_curso27 = Route("POST", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("alumno/buscar_curso/"))))
+        
+
+// @LINE:41
+private[this] lazy val controllers_ProfesorController_index28 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("profesor/index"))))
+        
+
+// @LINE:42
+private[this] lazy val controllers_ProfesorController_create29 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("profesor/new"))))
+        
+
+// @LINE:43
+private[this] lazy val controllers_ProfesorController_inicio_profesor30 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("home/InicioProfesor"))))
+        
+
+// @LINE:44
+private[this] lazy val controllers_ProfesorController_create_curso31 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("profesor/CrearCurso"))))
+        
+
+// @LINE:45
+private[this] lazy val controllers_ProfesorController_save_curso32 = Route("POST", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("profesor/CrearCurso"))))
+        
+
+// @LINE:46
+private[this] lazy val controllers_ProfesorController_save33 = Route("POST", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("profesor/new"))))
+        
+
+// @LINE:47
+private[this] lazy val controllers_ProfesorController_edit34 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("profesor/editar/"),DynamicPart("id", """[^/]+""",true))))
+        
+
+// @LINE:48
+private[this] lazy val controllers_ProfesorController_update35 = Route("POST", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("profesor/editar/"),DynamicPart("id", """[^/]+""",true))))
+        
+
+// @LINE:49
+private[this] lazy val controllers_ProfesorController_delete36 = Route("POST", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("profesor/delete/"),DynamicPart("id", """[^/]+""",true))))
+        
+
+// @LINE:50
+private[this] lazy val controllers_ProfesorController_buscar37 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("profesor/buscar/"))))
+        
+
+// @LINE:51
+private[this] lazy val controllers_ProfesorController_mostrar38 = Route("POST", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("profesor/buscar/"))))
+        
+
+// @LINE:52
+private[this] lazy val controllers_ProfesorController_gestion_cursos39 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("profesor/gestion_cursos"))))
+        
+
+// @LINE:53
+private[this] lazy val controllers_ProfesorController_gestion_curso40 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("profesor/gestion_cursos/"),DynamicPart("id", """[^/]+""",true))))
+        
+
+// @LINE:54
+private[this] lazy val controllers_ProfesorController_create_clase41 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("profesor/gestion_cursos/create_clase/"),DynamicPart("id", """[^/]+""",true))))
+        
+
+// @LINE:55
+private[this] lazy val controllers_ProfesorController_save_clase42 = Route("POST", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("profesor/gestion_cursos/create_clase/"),DynamicPart("id", """[^/]+""",true))))
+        
+
+// @LINE:56
+private[this] lazy val controllers_ProfesorController_edit_clase43 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("profesor/gestion_cursos/edit_clase/"),DynamicPart("id", """[^/]+""",true))))
+        
+
+// @LINE:57
+private[this] lazy val controllers_ProfesorController_update_clase44 = Route("POST", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("profesor/gestion_cursos/edit_clase/"),DynamicPart("id", """[^/]+""",true))))
+        
+
+// @LINE:58
+private[this] lazy val controllers_ProfesorController_delete_clase45 = Route("POST", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("profesor/gestion_cursos/delete/"),DynamicPart("id", """[^/]+""",true))))
+        
+
+// @LINE:59
+private[this] lazy val controllers_ProfesorController_download_clase46 = Route("POST", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("profesor/gestion_cursos/download/"),DynamicPart("id", """[^/]+""",true))))
+        
+
+// @LINE:63
+private[this] lazy val controllers_Assets_at47 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("assets/"),DynamicPart("file", """.+""",false))))
+        
+
+// @LINE:64
+private[this] lazy val controllers_Assets_at48 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("images/"),DynamicPart("file", """.+""",false))))
+        
+
+// @LINE:65
+private[this] lazy val controllers_Assets_at49 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("profesores/"),DynamicPart("file", """.+""",false))))
+        
+def documentation = List(("""GET""", prefix,"""controllers.Home.welcome()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """acerca_de""","""controllers.Home.acerca_de()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """home/salir""","""controllers.Home.salir()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """home/ingresar""","""controllers.Home.login()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """home/ingresar""","""controllers.Home.ingresar()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """home/InicioAlumno""","""controllers.Home.inicio_alumno()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """admin/index""","""controllers.Administrador.index()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """admin/publicar""","""controllers.Administrador.publicar()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """admin/publicar/new""","""controllers.Administrador.create()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """admin/publicar/new""","""controllers.Administrador.save()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """admin/publicar/editar/$id<[^/]+>""","""controllers.Administrador.edit(id:Long)"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """admin/publicar/editar/$id<[^/]+>""","""controllers.Administrador.update(id:Long)"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """admin/publicar/delete/$id<[^/]+>""","""controllers.Administrador.delete(id:Long)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """alumno/listaAlu""","""controllers.AlumnoController.listaAlu()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """curso/listaCursos""","""controllers.AlumnoController.lista_cursos()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """alumno/new""","""controllers.AlumnoController.create()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """alumno/new""","""controllers.AlumnoController.save()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """home/perfil""","""controllers.AlumnoController.editar_perfil()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """alumno/perfil/$id<[^/]+>""","""controllers.AlumnoController.edit_perfil(id:Long)"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """alumno/perfil/$id<[^/]+>""","""controllers.AlumnoController.update_perfil(id:Long)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """alumno/password/""","""controllers.AlumnoController.editar_password()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """alumno/password/$id<[^/]+>""","""controllers.AlumnoController.edit_password(id:Long)"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """alumno/password/$id<[^/]+>""","""controllers.AlumnoController.update_password(id:Long)"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """delete/$id<[^/]+>""","""controllers.AlumnoController.delete(id:Long)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """alumno/buscar/""","""controllers.AlumnoController.buscar()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """alumno/buscar/""","""controllers.AlumnoController.mostrar()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """alumno/buscar_curso/""","""controllers.AlumnoController.buscar_curso()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """alumno/buscar_curso/""","""controllers.AlumnoController.mostrar_curso()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """profesor/index""","""controllers.ProfesorController.index()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """profesor/new""","""controllers.ProfesorController.create()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """home/InicioProfesor""","""controllers.ProfesorController.inicio_profesor()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """profesor/CrearCurso""","""controllers.ProfesorController.create_curso()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """profesor/CrearCurso""","""controllers.ProfesorController.save_curso()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """profesor/new""","""controllers.ProfesorController.save()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """profesor/editar/$id<[^/]+>""","""controllers.ProfesorController.edit(id:Long)"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """profesor/editar/$id<[^/]+>""","""controllers.ProfesorController.update(id:Long)"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """profesor/delete/$id<[^/]+>""","""controllers.ProfesorController.delete(id:Long)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """profesor/buscar/""","""controllers.ProfesorController.buscar()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """profesor/buscar/""","""controllers.ProfesorController.mostrar()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """profesor/gestion_cursos""","""controllers.ProfesorController.gestion_cursos()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """profesor/gestion_cursos/$id<[^/]+>""","""controllers.ProfesorController.gestion_curso(id:Long)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """profesor/gestion_cursos/create_clase/$id<[^/]+>""","""controllers.ProfesorController.create_clase(id:Long)"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """profesor/gestion_cursos/create_clase/$id<[^/]+>""","""controllers.ProfesorController.save_clase(id:Long)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """profesor/gestion_cursos/edit_clase/$id<[^/]+>""","""controllers.ProfesorController.edit_clase(id:Long)"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """profesor/gestion_cursos/edit_clase/$id<[^/]+>""","""controllers.ProfesorController.update_clase(id:Long)"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """profesor/gestion_cursos/delete/$id<[^/]+>""","""controllers.ProfesorController.delete_clase(id:Long)"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """profesor/gestion_cursos/download/$id<[^/]+>""","""controllers.ProfesorController.download_clase(id:Long)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """assets/$file<.+>""","""controllers.Assets.at(path:String = "/public", file:String)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """images/$file<.+>""","""controllers.Assets.at(path:String = "/public/images", file:String)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """profesores/$file<.+>""","""controllers.Assets.at(path:String = "/public/archivos/profesores", file:String)""")).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
+  case r @ (_,_,_) => s :+ r.asInstanceOf[(String,String,String)]
+  case l => s ++ l.asInstanceOf[List[(String,String,String)]] 
+}}
+       
+    
+def routes:PartialFunction[RequestHeader,Handler] = {        
+
+// @LINE:6
+case controllers_Home_welcome0(params) => {
+   call { 
+        invokeHandler(controllers.Home.welcome(), HandlerDef(this, "controllers.Home", "welcome", Nil,"GET", """ Home page""", Routes.prefix + """"""))
+   }
+}
+        
+
+// @LINE:7
+case controllers_Home_acerca_de1(params) => {
+   call { 
+        invokeHandler(controllers.Home.acerca_de(), HandlerDef(this, "controllers.Home", "acerca_de", Nil,"GET", """""", Routes.prefix + """acerca_de"""))
+   }
+}
+        
+
+// @LINE:8
+case controllers_Home_salir2(params) => {
+   call { 
+        invokeHandler(controllers.Home.salir(), HandlerDef(this, "controllers.Home", "salir", Nil,"GET", """""", Routes.prefix + """home/salir"""))
+   }
+}
+        
+
+// @LINE:9
+case controllers_Home_login3(params) => {
+   call { 
+        invokeHandler(controllers.Home.login(), HandlerDef(this, "controllers.Home", "login", Nil,"GET", """""", Routes.prefix + """home/ingresar"""))
+   }
+}
+        
+
+// @LINE:10
+case controllers_Home_ingresar4(params) => {
+   call { 
+        invokeHandler(controllers.Home.ingresar(), HandlerDef(this, "controllers.Home", "ingresar", Nil,"POST", """""", Routes.prefix + """home/ingresar"""))
+   }
+}
+        
+
+// @LINE:11
+case controllers_Home_inicio_alumno5(params) => {
+   call { 
+        invokeHandler(controllers.Home.inicio_alumno(), HandlerDef(this, "controllers.Home", "inicio_alumno", Nil,"GET", """""", Routes.prefix + """home/InicioAlumno"""))
+   }
+}
+        
+
+// @LINE:14
+case controllers_Administrador_index6(params) => {
+   call { 
+        invokeHandler(controllers.Administrador.index(), HandlerDef(this, "controllers.Administrador", "index", Nil,"GET", """Administrador""", Routes.prefix + """admin/index"""))
+   }
+}
+        
+
+// @LINE:15
+case controllers_Administrador_publicar7(params) => {
+   call { 
+        invokeHandler(controllers.Administrador.publicar(), HandlerDef(this, "controllers.Administrador", "publicar", Nil,"GET", """""", Routes.prefix + """admin/publicar"""))
+   }
+}
+        
+
+// @LINE:16
+case controllers_Administrador_create8(params) => {
+   call { 
+        invokeHandler(controllers.Administrador.create(), HandlerDef(this, "controllers.Administrador", "create", Nil,"GET", """""", Routes.prefix + """admin/publicar/new"""))
+   }
+}
+        
+
+// @LINE:17
+case controllers_Administrador_save9(params) => {
+   call { 
+        invokeHandler(controllers.Administrador.save(), HandlerDef(this, "controllers.Administrador", "save", Nil,"POST", """""", Routes.prefix + """admin/publicar/new"""))
+   }
+}
+        
+
+// @LINE:18
+case controllers_Administrador_edit10(params) => {
+   call(params.fromPath[Long]("id", None)) { (id) =>
+        invokeHandler(controllers.Administrador.edit(id), HandlerDef(this, "controllers.Administrador", "edit", Seq(classOf[Long]),"GET", """""", Routes.prefix + """admin/publicar/editar/$id<[^/]+>"""))
+   }
+}
+        
+
+// @LINE:19
+case controllers_Administrador_update11(params) => {
+   call(params.fromPath[Long]("id", None)) { (id) =>
+        invokeHandler(controllers.Administrador.update(id), HandlerDef(this, "controllers.Administrador", "update", Seq(classOf[Long]),"POST", """""", Routes.prefix + """admin/publicar/editar/$id<[^/]+>"""))
+   }
+}
+        
+
+// @LINE:20
+case controllers_Administrador_delete12(params) => {
+   call(params.fromPath[Long]("id", None)) { (id) =>
+        invokeHandler(controllers.Administrador.delete(id), HandlerDef(this, "controllers.Administrador", "delete", Seq(classOf[Long]),"POST", """""", Routes.prefix + """admin/publicar/delete/$id<[^/]+>"""))
+   }
+}
+        
+
+// @LINE:23
+case controllers_AlumnoController_listaAlu13(params) => {
+   call { 
+        invokeHandler(controllers.AlumnoController.listaAlu(), HandlerDef(this, "controllers.AlumnoController", "listaAlu", Nil,"GET", """Alumno""", Routes.prefix + """alumno/listaAlu"""))
+   }
+}
+        
+
+// @LINE:24
+case controllers_AlumnoController_lista_cursos14(params) => {
+   call { 
+        invokeHandler(controllers.AlumnoController.lista_cursos(), HandlerDef(this, "controllers.AlumnoController", "lista_cursos", Nil,"GET", """""", Routes.prefix + """curso/listaCursos"""))
+   }
+}
+        
+
+// @LINE:25
+case controllers_AlumnoController_create15(params) => {
+   call { 
+        invokeHandler(controllers.AlumnoController.create(), HandlerDef(this, "controllers.AlumnoController", "create", Nil,"GET", """""", Routes.prefix + """alumno/new"""))
+   }
+}
+        
+
+// @LINE:26
+case controllers_AlumnoController_save16(params) => {
+   call { 
+        invokeHandler(controllers.AlumnoController.save(), HandlerDef(this, "controllers.AlumnoController", "save", Nil,"POST", """""", Routes.prefix + """alumno/new"""))
+   }
+}
+        
+
+// @LINE:27
+case controllers_AlumnoController_editar_perfil17(params) => {
+   call { 
+        invokeHandler(controllers.AlumnoController.editar_perfil(), HandlerDef(this, "controllers.AlumnoController", "editar_perfil", Nil,"GET", """""", Routes.prefix + """home/perfil"""))
+   }
+}
+        
+
+// @LINE:28
+case controllers_AlumnoController_edit_perfil18(params) => {
+   call(params.fromPath[Long]("id", None)) { (id) =>
+        invokeHandler(controllers.AlumnoController.edit_perfil(id), HandlerDef(this, "controllers.AlumnoController", "edit_perfil", Seq(classOf[Long]),"GET", """""", Routes.prefix + """alumno/perfil/$id<[^/]+>"""))
+   }
+}
+        
+
+// @LINE:29
+case controllers_AlumnoController_update_perfil19(params) => {
+   call(params.fromPath[Long]("id", None)) { (id) =>
+        invokeHandler(controllers.AlumnoController.update_perfil(id), HandlerDef(this, "controllers.AlumnoController", "update_perfil", Seq(classOf[Long]),"POST", """""", Routes.prefix + """alumno/perfil/$id<[^/]+>"""))
+   }
+}
+        
+
+// @LINE:30
+case controllers_AlumnoController_editar_password20(params) => {
+   call { 
+        invokeHandler(controllers.AlumnoController.editar_password(), HandlerDef(this, "controllers.AlumnoController", "editar_password", Nil,"GET", """""", Routes.prefix + """alumno/password/"""))
+   }
+}
+        
+
+// @LINE:31
+case controllers_AlumnoController_edit_password21(params) => {
+   call(params.fromPath[Long]("id", None)) { (id) =>
+        invokeHandler(controllers.AlumnoController.edit_password(id), HandlerDef(this, "controllers.AlumnoController", "edit_password", Seq(classOf[Long]),"GET", """""", Routes.prefix + """alumno/password/$id<[^/]+>"""))
+   }
+}
+        
+
+// @LINE:32
+case controllers_AlumnoController_update_password22(params) => {
+   call(params.fromPath[Long]("id", None)) { (id) =>
+        invokeHandler(controllers.AlumnoController.update_password(id), HandlerDef(this, "controllers.AlumnoController", "update_password", Seq(classOf[Long]),"POST", """""", Routes.prefix + """alumno/password/$id<[^/]+>"""))
+   }
+}
+        
+
+// @LINE:33
+case controllers_AlumnoController_delete23(params) => {
+   call(params.fromPath[Long]("id", None)) { (id) =>
+        invokeHandler(controllers.AlumnoController.delete(id), HandlerDef(this, "controllers.AlumnoController", "delete", Seq(classOf[Long]),"POST", """""", Routes.prefix + """delete/$id<[^/]+>"""))
+   }
+}
+        
+
+// @LINE:34
+case controllers_AlumnoController_buscar24(params) => {
+   call { 
+        invokeHandler(controllers.AlumnoController.buscar(), HandlerDef(this, "controllers.AlumnoController", "buscar", Nil,"GET", """""", Routes.prefix + """alumno/buscar/"""))
+   }
+}
+        
+
+// @LINE:35
+case controllers_AlumnoController_mostrar25(params) => {
+   call { 
+        invokeHandler(controllers.AlumnoController.mostrar(), HandlerDef(this, "controllers.AlumnoController", "mostrar", Nil,"POST", """""", Routes.prefix + """alumno/buscar/"""))
+   }
+}
+        
+
+// @LINE:36
+case controllers_AlumnoController_buscar_curso26(params) => {
+   call { 
+        invokeHandler(controllers.AlumnoController.buscar_curso(), HandlerDef(this, "controllers.AlumnoController", "buscar_curso", Nil,"GET", """""", Routes.prefix + """alumno/buscar_curso/"""))
+   }
+}
+        
+
+// @LINE:37
+case controllers_AlumnoController_mostrar_curso27(params) => {
+   call { 
+        invokeHandler(controllers.AlumnoController.mostrar_curso(), HandlerDef(this, "controllers.AlumnoController", "mostrar_curso", Nil,"POST", """""", Routes.prefix + """alumno/buscar_curso/"""))
+   }
+}
+        
+
+// @LINE:41
+case controllers_ProfesorController_index28(params) => {
+   call { 
+        invokeHandler(controllers.ProfesorController.index(), HandlerDef(this, "controllers.ProfesorController", "index", Nil,"GET", """Profesor""", Routes.prefix + """profesor/index"""))
+   }
+}
+        
+
+// @LINE:42
+case controllers_ProfesorController_create29(params) => {
+   call { 
+        invokeHandler(controllers.ProfesorController.create(), HandlerDef(this, "controllers.ProfesorController", "create", Nil,"GET", """""", Routes.prefix + """profesor/new"""))
+   }
+}
+        
+
+// @LINE:43
+case controllers_ProfesorController_inicio_profesor30(params) => {
+   call { 
+        invokeHandler(controllers.ProfesorController.inicio_profesor(), HandlerDef(this, "controllers.ProfesorController", "inicio_profesor", Nil,"GET", """""", Routes.prefix + """home/InicioProfesor"""))
+   }
+}
+        
+
+// @LINE:44
+case controllers_ProfesorController_create_curso31(params) => {
+   call { 
+        invokeHandler(controllers.ProfesorController.create_curso(), HandlerDef(this, "controllers.ProfesorController", "create_curso", Nil,"GET", """""", Routes.prefix + """profesor/CrearCurso"""))
+   }
+}
+        
+
+// @LINE:45
+case controllers_ProfesorController_save_curso32(params) => {
+   call { 
+        invokeHandler(controllers.ProfesorController.save_curso(), HandlerDef(this, "controllers.ProfesorController", "save_curso", Nil,"POST", """""", Routes.prefix + """profesor/CrearCurso"""))
+   }
+}
+        
+
+// @LINE:46
+case controllers_ProfesorController_save33(params) => {
+   call { 
+        invokeHandler(controllers.ProfesorController.save(), HandlerDef(this, "controllers.ProfesorController", "save", Nil,"POST", """""", Routes.prefix + """profesor/new"""))
+   }
+}
+        
+
+// @LINE:47
+case controllers_ProfesorController_edit34(params) => {
+   call(params.fromPath[Long]("id", None)) { (id) =>
+        invokeHandler(controllers.ProfesorController.edit(id), HandlerDef(this, "controllers.ProfesorController", "edit", Seq(classOf[Long]),"GET", """""", Routes.prefix + """profesor/editar/$id<[^/]+>"""))
+   }
+}
+        
+
+// @LINE:48
+case controllers_ProfesorController_update35(params) => {
+   call(params.fromPath[Long]("id", None)) { (id) =>
+        invokeHandler(controllers.ProfesorController.update(id), HandlerDef(this, "controllers.ProfesorController", "update", Seq(classOf[Long]),"POST", """""", Routes.prefix + """profesor/editar/$id<[^/]+>"""))
+   }
+}
+        
+
+// @LINE:49
+case controllers_ProfesorController_delete36(params) => {
+   call(params.fromPath[Long]("id", None)) { (id) =>
+        invokeHandler(controllers.ProfesorController.delete(id), HandlerDef(this, "controllers.ProfesorController", "delete", Seq(classOf[Long]),"POST", """""", Routes.prefix + """profesor/delete/$id<[^/]+>"""))
+   }
+}
+        
+
+// @LINE:50
+case controllers_ProfesorController_buscar37(params) => {
+   call { 
+        invokeHandler(controllers.ProfesorController.buscar(), HandlerDef(this, "controllers.ProfesorController", "buscar", Nil,"GET", """""", Routes.prefix + """profesor/buscar/"""))
+   }
+}
+        
+
+// @LINE:51
+case controllers_ProfesorController_mostrar38(params) => {
+   call { 
+        invokeHandler(controllers.ProfesorController.mostrar(), HandlerDef(this, "controllers.ProfesorController", "mostrar", Nil,"POST", """""", Routes.prefix + """profesor/buscar/"""))
+   }
+}
+        
+
+// @LINE:52
+case controllers_ProfesorController_gestion_cursos39(params) => {
+   call { 
+        invokeHandler(controllers.ProfesorController.gestion_cursos(), HandlerDef(this, "controllers.ProfesorController", "gestion_cursos", Nil,"GET", """""", Routes.prefix + """profesor/gestion_cursos"""))
+   }
+}
+        
+
+// @LINE:53
+case controllers_ProfesorController_gestion_curso40(params) => {
+   call(params.fromPath[Long]("id", None)) { (id) =>
+        invokeHandler(controllers.ProfesorController.gestion_curso(id), HandlerDef(this, "controllers.ProfesorController", "gestion_curso", Seq(classOf[Long]),"GET", """""", Routes.prefix + """profesor/gestion_cursos/$id<[^/]+>"""))
+   }
+}
+        
+
+// @LINE:54
+case controllers_ProfesorController_create_clase41(params) => {
+   call(params.fromPath[Long]("id", None)) { (id) =>
+        invokeHandler(controllers.ProfesorController.create_clase(id), HandlerDef(this, "controllers.ProfesorController", "create_clase", Seq(classOf[Long]),"GET", """""", Routes.prefix + """profesor/gestion_cursos/create_clase/$id<[^/]+>"""))
+   }
+}
+        
+
+// @LINE:55
+case controllers_ProfesorController_save_clase42(params) => {
+   call(params.fromPath[Long]("id", None)) { (id) =>
+        invokeHandler(controllers.ProfesorController.save_clase(id), HandlerDef(this, "controllers.ProfesorController", "save_clase", Seq(classOf[Long]),"POST", """""", Routes.prefix + """profesor/gestion_cursos/create_clase/$id<[^/]+>"""))
+   }
+}
+        
+
+// @LINE:56
+case controllers_ProfesorController_edit_clase43(params) => {
+   call(params.fromPath[Long]("id", None)) { (id) =>
+        invokeHandler(controllers.ProfesorController.edit_clase(id), HandlerDef(this, "controllers.ProfesorController", "edit_clase", Seq(classOf[Long]),"GET", """""", Routes.prefix + """profesor/gestion_cursos/edit_clase/$id<[^/]+>"""))
+   }
+}
+        
+
+// @LINE:57
+case controllers_ProfesorController_update_clase44(params) => {
+   call(params.fromPath[Long]("id", None)) { (id) =>
+        invokeHandler(controllers.ProfesorController.update_clase(id), HandlerDef(this, "controllers.ProfesorController", "update_clase", Seq(classOf[Long]),"POST", """""", Routes.prefix + """profesor/gestion_cursos/edit_clase/$id<[^/]+>"""))
+   }
+}
+        
+
+// @LINE:58
+case controllers_ProfesorController_delete_clase45(params) => {
+   call(params.fromPath[Long]("id", None)) { (id) =>
+        invokeHandler(controllers.ProfesorController.delete_clase(id), HandlerDef(this, "controllers.ProfesorController", "delete_clase", Seq(classOf[Long]),"POST", """""", Routes.prefix + """profesor/gestion_cursos/delete/$id<[^/]+>"""))
+   }
+}
+        
+
+// @LINE:59
+case controllers_ProfesorController_download_clase46(params) => {
+   call(params.fromPath[Long]("id", None)) { (id) =>
+        invokeHandler(controllers.ProfesorController.download_clase(id), HandlerDef(this, "controllers.ProfesorController", "download_clase", Seq(classOf[Long]),"POST", """""", Routes.prefix + """profesor/gestion_cursos/download/$id<[^/]+>"""))
+   }
+}
+        
+
+// @LINE:63
+case controllers_Assets_at47(params) => {
+   call(Param[String]("path", Right("/public")), params.fromPath[String]("file", None)) { (path, file) =>
+        invokeHandler(controllers.Assets.at(path, file), HandlerDef(this, "controllers.Assets", "at", Seq(classOf[String], classOf[String]),"GET", """ Map static resources from the /public folder to the /assets URL path""", Routes.prefix + """assets/$file<.+>"""))
+   }
+}
+        
+
+// @LINE:64
+case controllers_Assets_at48(params) => {
+   call(Param[String]("path", Right("/public/images")), params.fromPath[String]("file", None)) { (path, file) =>
+        invokeHandler(controllers.Assets.at(path, file), HandlerDef(this, "controllers.Assets", "at", Seq(classOf[String], classOf[String]),"GET", """""", Routes.prefix + """images/$file<.+>"""))
+   }
+}
+        
+
+// @LINE:65
+case controllers_Assets_at49(params) => {
+   call(Param[String]("path", Right("/public/archivos/profesores")), params.fromPath[String]("file", None)) { (path, file) =>
+        invokeHandler(controllers.Assets.at(path, file), HandlerDef(this, "controllers.Assets", "at", Seq(classOf[String], classOf[String]),"GET", """""", Routes.prefix + """profesores/$file<.+>"""))
+   }
+}
+        
+}
+    
+}
+        

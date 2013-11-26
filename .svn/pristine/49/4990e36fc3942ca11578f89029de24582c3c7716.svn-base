@@ -1,0 +1,65 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /            									controllers.Home.welcome()
+GET		/acerca_de										controllers.Home.acerca_de()
+GET     /home/salir             						controllers.Home.salir()
+GET 	/home/ingresar									controllers.Home.login()
+POST	/home/ingresar									controllers.Home.ingresar()
+GET		/home/InicioAlumno								controllers.Home.inicio_alumno()
+
+#Administrador
+GET 	/admin/index			 						controllers.Administrador.index()
+GET     /admin/publicar									controllers.Administrador.publicar()	
+GET 	/admin/publicar/new								controllers.Administrador.create()
+POST 	/admin/publicar/new				 				controllers.Administrador.save()
+GET 	/admin/publicar/editar/:id						controllers.Administrador.edit(id : Long)
+POST 	/admin/publicar/editar/:id						controllers.Administrador.update(id : Long)
+POST	/admin/publicar/delete/:id						controllers.Administrador.delete(id : Long)
+
+#Alumno
+GET 	/alumno/listaAlu								controllers.AlumnoController.listaAlu()
+GET 	/curso/listaCursos								controllers.AlumnoController.lista_cursos()
+GET 	/alumno/new					       				controllers.AlumnoController.create()
+POST 	/alumno/new					       				controllers.AlumnoController.save()
+GET		/home/perfil									controllers.AlumnoController.editar_perfil()
+GET 	/alumno/perfil/:id								controllers.AlumnoController.edit_perfil(id : Long)
+POST 	/alumno/perfil/:id								controllers.AlumnoController.update_perfil(id : Long)
+GET 	/alumno/password/								controllers.AlumnoController.editar_password()
+GET 	/alumno/password/:id							controllers.AlumnoController.edit_password(id : Long)
+POST 	/alumno/password/:id							controllers.AlumnoController.update_password(id : Long)
+POST	/delete/:id						   				controllers.AlumnoController.delete(id : Long)
+GET		/alumno/buscar/				      				controllers.AlumnoController.buscar()
+POST	/alumno/buscar/				     				controllers.AlumnoController.mostrar()
+GET		/alumno/buscar_curso/				      		controllers.AlumnoController.buscar_curso()
+POST	/alumno/buscar_curso/				     		controllers.AlumnoController.mostrar_curso()
+
+
+#Profesor
+GET 	/profesor/index									controllers.ProfesorController.index()
+GET 	/profesor/new									controllers.ProfesorController.create()
+GET		/home/InicioProfesor							controllers.ProfesorController.inicio_profesor()
+GET		/profesor/CrearCurso							controllers.ProfesorController.create_curso()
+POST	/profesor/CrearCurso							controllers.ProfesorController.save_curso()
+POST 	/profesor/new									controllers.ProfesorController.save()
+GET 	/profesor/editar/:id							controllers.ProfesorController.edit(id : Long)
+POST 	/profesor/editar/:id							controllers.ProfesorController.update(id : Long)
+POST	/profesor/delete/:id							controllers.ProfesorController.delete(id : Long)
+GET		/profesor/buscar/				    			controllers.ProfesorController.buscar()
+POST	/profesor/buscar/				    			controllers.ProfesorController.mostrar()
+GET		/profesor/gestion_cursos						controllers.ProfesorController.gestion_cursos()
+GET		/profesor/gestion_cursos/:id					controllers.ProfesorController.gestion_curso(id : Long)
+GET		/profesor/gestion_cursos/create_clase/:id		controllers.ProfesorController.create_clase(id : Long)
+POST	/profesor/gestion_cursos/create_clase/:id		controllers.ProfesorController.save_clase(id :Long)
+GET		/profesor/gestion_cursos/edit_clase/:id			controllers.ProfesorController.edit_clase(id :Long)			
+POST	/profesor/gestion_cursos/edit_clase/:id			controllers.ProfesorController.update_clase(id :Long)
+POST	/profesor/gestion_cursos/delete/:id				controllers.ProfesorController.delete_clase(id :Long)
+POST	/profesor/gestion_cursos/download/:id			controllers.ProfesorController.download_clase(id :Long)
+
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
+GET  	/images/*file             	controllers.Assets.at(path="/public/images", file)
+GET 	/profesores/*file			controllers.Assets.at(path="/public/archivos/profesores",file)

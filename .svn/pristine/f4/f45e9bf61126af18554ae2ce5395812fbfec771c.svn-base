@@ -1,0 +1,75 @@
+
+package views.html.profesor
+
+import play.templates._
+import play.templates.TemplateMagic._
+
+import play.api.templates._
+import play.api.templates.PlayMagic._
+import models._
+import controllers._
+import java.lang._
+import java.util._
+import scala.collection.JavaConversions._
+import scala.collection.JavaConverters._
+import play.api.i18n._
+import play.core.j.PlayMagicForJava._
+import play.mvc._
+import play.data._
+import play.api.data.Field
+import play.mvc.Http.Context.Implicit._
+import views.html._
+/**/
+object buscar extends BaseScalaTemplate[play.api.templates.Html,Format[play.api.templates.Html]](play.api.templates.HtmlFormat) with play.api.templates.Template1[Form[auxiliar],play.api.templates.Html] {
+
+    /**/
+    def apply/*1.2*/(formulario: Form[auxiliar]):play.api.templates.Html = {
+        _display_ {import helper._
+
+implicit def /*5.2*/implicitFieldConstructor/*5.26*/ = {{ FieldConstructor(views.html.include.constructor_field_input.render) }};
+Seq[Any](format.raw/*1.30*/("""
+
+"""),format.raw/*4.1*/("""
+"""),format.raw/*5.99*/("""
+
+"""),_display_(Seq[Any](/*7.2*/main("Buscar Profesor")/*7.25*/ {_display_(Seq[Any](format.raw/*7.27*/("""
+	
+"""),_display_(Seq[Any](/*9.2*/if(flash.containsKey("invalid"))/*9.34*/ {_display_(Seq[Any](format.raw/*9.36*/("""
+	<h3 style="color: green">
+		<image src=""""),_display_(Seq[Any](/*11.16*/routes/*11.22*/.Assets.at("/public/images","ok.gif"))),format.raw/*11.59*/("""">
+		"""),_display_(Seq[Any](/*12.4*/flash/*12.9*/.get("invalid"))),format.raw/*12.24*/("""
+	</h3>
+""")))})),format.raw/*14.2*/(""" 
+
+<h2> Busqueda de Profesores  </h2>
+
+"""),_display_(Seq[Any](/*18.2*/form(routes.ProfesorController.mostrar())/*18.43*/ {_display_(Seq[Any](format.raw/*18.45*/("""
+	<fieldset>
+		"""),_display_(Seq[Any](/*20.4*/inputText(formulario("dni"),'_showConstraints -> false, '_label -> "Ingrese dni del profesor :"))),format.raw/*20.100*/("""
+	</fieldset>
+	
+	
+    <input type="submit" value="Buscar"> -
+	<a href=""""),_display_(Seq[Any](/*25.12*/routes/*25.18*/.ProfesorController.index())),format.raw/*25.45*/(""""> <input type="button" value="Cancelar"> </a>
+""")))})),format.raw/*26.2*/("""
+    
+""")))})))}
+    }
+    
+    def render(formulario:Form[auxiliar]): play.api.templates.Html = apply(formulario)
+    
+    def f:((Form[auxiliar]) => play.api.templates.Html) = (formulario) => apply(formulario)
+    
+    def ref: this.type = this
+
+}
+                /*
+                    -- GENERATED --
+                    DATE: Sun Nov 24 13:10:59 COT 2013
+                    SOURCE: C:/wwww/tuto/branches/HERNAN/app/views/profesor/buscar.scala.html
+                    HASH: dc57aece9b62f9cfe55c2478ff96e19d66e9e869
+                    MATRIX: 741->1|855->54|887->78|992->29|1022->51|1051->151|1090->156|1121->179|1160->181|1200->187|1240->219|1279->221|1360->266|1375->272|1434->309|1476->316|1489->321|1526->336|1568->347|1647->391|1697->432|1737->434|1790->452|1909->548|2022->625|2037->631|2086->658|2166->707
+                    LINES: 26->1|29->5|29->5|30->1|32->4|33->5|35->7|35->7|35->7|37->9|37->9|37->9|39->11|39->11|39->11|40->12|40->12|40->12|42->14|46->18|46->18|46->18|48->20|48->20|53->25|53->25|53->25|54->26
+                    -- GENERATED --
+                */
+            

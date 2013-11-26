@@ -1,0 +1,83 @@
+
+package views.html.curso
+
+import play.templates._
+import play.templates.TemplateMagic._
+
+import play.api.templates._
+import play.api.templates.PlayMagic._
+import models._
+import controllers._
+import java.lang._
+import java.util._
+import scala.collection.JavaConversions._
+import scala.collection.JavaConverters._
+import play.api.i18n._
+import play.core.j.PlayMagicForJava._
+import play.mvc._
+import play.data._
+import play.api.data.Field
+import play.mvc.Http.Context.Implicit._
+import views.html._
+/**/
+object mostrar_curso extends BaseScalaTemplate[play.api.templates.Html,Format[play.api.templates.Html]](play.api.templates.HtmlFormat) with play.api.templates.Template1[Curso,play.api.templates.Html] {
+
+    /**/
+    def apply/*1.2*/(Curso: Curso):play.api.templates.Html = {
+        _display_ {import helper._
+
+implicit def /*5.2*/implicitFieldConstructor/*5.26*/ = {{ FieldConstructor(views.html.include.constructor_field_input.render) }};
+Seq[Any](format.raw/*1.16*/("""
+
+"""),format.raw/*4.1*/("""
+"""),format.raw/*5.99*/("""
+
+"""),_display_(Seq[Any](/*7.2*/main("Mostrar Curso")/*7.23*/ {_display_(Seq[Any](format.raw/*7.25*/("""
+
+<h2> Datos del Curso  </h2>
+
+<table class="table table-bordered">
+	<tr >
+		<th>Id</th>
+		<th>Nombre</th>
+		<th>Ciclo</th>
+		<th>Creditos</th>
+		<th>Profesor</th>
+		<th>Creado</th>
+		<th>Modificado</th>
+		<th>Accion</th>
+	</tr>
+	 <tr class='webgrid-row-style'>
+		<tr >
+		<td>"""),_display_(Seq[Any](/*24.8*/Curso/*24.13*/.id)),format.raw/*24.16*/("""</td>
+		<td>"""),_display_(Seq[Any](/*25.8*/Curso/*25.13*/.name)),format.raw/*25.18*/("""</td>
+		<td>"""),_display_(Seq[Any](/*26.8*/Curso/*26.13*/.ciclo)),format.raw/*26.19*/("""</td>
+		<td>"""),_display_(Seq[Any](/*27.8*/Curso/*27.13*/.creditos)),format.raw/*27.22*/("""</td>
+		<td>"""),_display_(Seq[Any](/*28.8*/Curso/*28.13*/.profesor.nombres)),format.raw/*28.30*/(""" """),_display_(Seq[Any](/*28.32*/Curso/*28.37*/.profesor.apellidos)),format.raw/*28.56*/("""</td>
+		<td>"""),_display_(Seq[Any](/*29.8*/Curso/*29.13*/.created.format("dd/MM/yyyy"))),format.raw/*29.42*/("""</td>
+		<td>"""),_display_(Seq[Any](/*30.8*/Curso/*30.13*/.updated.format("dd/MM/yyyy"))),format.raw/*30.42*/("""</td>
+		<td><a href=""> <input type="button" value="Unirse"> </a></td>	
+	</tr>
+
+</table>
+	<a href=""""),_display_(Seq[Any](/*35.12*/routes/*35.18*/.AlumnoController.buscar_curso())),format.raw/*35.50*/(""""> <input type="button" value="Regresar"> </a>
+""")))})))}
+    }
+    
+    def render(Curso:Curso): play.api.templates.Html = apply(Curso)
+    
+    def f:((Curso) => play.api.templates.Html) = (Curso) => apply(Curso)
+    
+    def ref: this.type = this
+
+}
+                /*
+                    -- GENERATED --
+                    DATE: Fri Nov 22 22:48:29 COT 2013
+                    SOURCE: C:/wwww/tuto/branches/HERNAN/app/views/curso/mostrar_curso.scala.html
+                    HASH: 8e997c4ac76776755826d9763447152ef18685dc
+                    MATRIX: 736->1|836->40|868->64|973->15|1003->37|1032->137|1071->142|1100->163|1139->165|1468->459|1482->464|1507->467|1556->481|1570->486|1597->491|1646->505|1660->510|1688->516|1737->530|1751->535|1782->544|1831->558|1845->563|1884->580|1922->582|1936->587|1977->606|2026->620|2040->625|2091->654|2140->668|2154->673|2205->702|2346->807|2361->813|2415->845
+                    LINES: 26->1|29->5|29->5|30->1|32->4|33->5|35->7|35->7|35->7|52->24|52->24|52->24|53->25|53->25|53->25|54->26|54->26|54->26|55->27|55->27|55->27|56->28|56->28|56->28|56->28|56->28|56->28|57->29|57->29|57->29|58->30|58->30|58->30|63->35|63->35|63->35
+                    -- GENERATED --
+                */
+            

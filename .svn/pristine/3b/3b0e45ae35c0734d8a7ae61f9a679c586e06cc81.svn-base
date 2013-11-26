@@ -1,0 +1,101 @@
+
+package views.html.alumno
+
+import play.templates._
+import play.templates.TemplateMagic._
+
+import play.api.templates._
+import play.api.templates.PlayMagic._
+import models._
+import controllers._
+import java.lang._
+import java.util._
+import scala.collection.JavaConversions._
+import scala.collection.JavaConverters._
+import play.api.i18n._
+import play.core.j.PlayMagicForJava._
+import play.mvc._
+import play.data._
+import play.api.data.Field
+import play.mvc.Http.Context.Implicit._
+import views.html._
+/**/
+object mostrar extends BaseScalaTemplate[play.api.templates.Html,Format[play.api.templates.Html]](play.api.templates.HtmlFormat) with play.api.templates.Template1[Alumno,play.api.templates.Html] {
+
+    /**/
+    def apply/*1.2*/(alumno: Alumno):play.api.templates.Html = {
+        _display_ {import helper._
+
+implicit def /*5.2*/implicitFieldConstructor/*5.26*/ = {{ FieldConstructor(views.html.include.constructor_field_input.render) }};
+Seq[Any](format.raw/*1.18*/("""
+
+"""),format.raw/*4.1*/("""
+"""),format.raw/*5.99*/("""
+
+"""),_display_(Seq[Any](/*7.2*/main("Mostrar")/*7.17*/ {_display_(Seq[Any](format.raw/*7.19*/("""
+
+<h2> Datos del Alumno:  </h2>
+
+	<<table class='webgrid'>
+	<tr class='webgrid-header'>
+		<th>Id</th>
+		<th>Codigo</th>
+		<th>Nombres</th>
+		<th>Apellidos</th>
+		<th>Genero</th>
+		<th>fecha nac.</th>
+		<th>Residencia</th>
+		<th>Provincia</th>
+		<th>Escuela</th>
+		<th>User</th>
+		<th>Password</th>
+		<th>Email</th>
+		<th>creado</th>
+		<th>modificado</th>
+	</tr>
+	 <tr class='webgrid-row-style'>
+		<td>"""),_display_(Seq[Any](/*29.8*/alumno/*29.14*/.id)),format.raw/*29.17*/("""</td>
+		<td>"""),_display_(Seq[Any](/*30.8*/alumno/*30.14*/.codigo)),format.raw/*30.21*/("""</td>
+		<td>"""),_display_(Seq[Any](/*31.8*/alumno/*31.14*/.nombres)),format.raw/*31.22*/("""</td>
+		<td>"""),_display_(Seq[Any](/*32.8*/alumno/*32.14*/.apellidos)),format.raw/*32.24*/("""</td>
+		<td>"""),_display_(Seq[Any](/*33.8*/alumno/*33.14*/.genero)),format.raw/*33.21*/("""</td>
+		<td>"""),_display_(Seq[Any](/*34.8*/alumno/*34.14*/.fecha)),format.raw/*34.20*/("""</td>
+		<td>"""),_display_(Seq[Any](/*35.8*/alumno/*35.14*/.residencia)),format.raw/*35.25*/("""</td>
+		<td>"""),_display_(Seq[Any](/*36.8*/alumno/*36.14*/.provincia)),format.raw/*36.24*/("""</td>
+		<td>"""),_display_(Seq[Any](/*37.8*/alumno/*37.14*/.escuela)),format.raw/*37.22*/("""</td>
+		<td>"""),_display_(Seq[Any](/*38.8*/alumno/*38.14*/.user)),format.raw/*38.19*/("""</td>
+		<td>"""),_display_(Seq[Any](/*39.8*/alumno/*39.14*/.password)),format.raw/*39.23*/("""</td>
+		<td>"""),_display_(Seq[Any](/*40.8*/alumno/*40.14*/.email)),format.raw/*40.20*/("""</td>
+		<td>"""),_display_(Seq[Any](/*41.8*/alumno/*41.14*/.created.format("dd/MM/yyyy - hh:mm"))),format.raw/*41.51*/("""</td>
+		<td>"""),_display_(Seq[Any](/*42.8*/alumno/*42.14*/.updated.format("dd/MM/yyyy - hh:mm"))),format.raw/*42.51*/("""</td>
+		<td><a href=""""),_display_(Seq[Any](/*43.17*/routes/*43.23*/.AlumnoController.edit_perfil(alumno.id))),format.raw/*43.63*/(""""> <input type="button" value="Editar"> </a></td>
+		<td>
+			"""),_display_(Seq[Any](/*45.5*/form(routes.AlumnoController.delete(alumno.id))/*45.52*/ {_display_(Seq[Any](format.raw/*45.54*/("""
+				<input type="submit" value="Eliminar">
+			""")))})),format.raw/*47.5*/("""
+		</td>
+		
+	</tr>
+
+</table>
+	<a href=""""),_display_(Seq[Any](/*53.12*/routes/*53.18*/.AlumnoController.buscar())),format.raw/*53.44*/(""""> <input type="button" value="Regresar"> </a>
+""")))})))}
+    }
+    
+    def render(alumno:Alumno): play.api.templates.Html = apply(alumno)
+    
+    def f:((Alumno) => play.api.templates.Html) = (alumno) => apply(alumno)
+    
+    def ref: this.type = this
+
+}
+                /*
+                    -- GENERATED --
+                    DATE: Fri Nov 22 22:48:29 COT 2013
+                    SOURCE: C:/wwww/tuto/branches/HERNAN/app/views/alumno/mostrar.scala.html
+                    HASH: e3b1dec686a842b6a7b57f5c3cd92339b2b5ff4b
+                    MATRIX: 732->1|833->38|865->62|970->17|998->36|1026->135|1063->138|1086->153|1125->155|1562->557|1577->563|1602->566|1650->579|1665->585|1694->592|1742->605|1757->611|1787->619|1835->632|1850->638|1882->648|1930->661|1945->667|1974->674|2022->687|2037->693|2065->699|2113->712|2128->718|2161->729|2209->742|2224->748|2256->758|2304->771|2319->777|2349->785|2397->798|2412->804|2439->809|2487->822|2502->828|2533->837|2581->850|2596->856|2624->862|2672->875|2687->881|2746->918|2794->931|2809->937|2868->974|2926->996|2941->1002|3003->1042|3099->1103|3155->1150|3195->1152|3274->1200|3350->1240|3365->1246|3413->1272
+                    LINES: 26->1|29->5|29->5|30->1|32->4|33->5|35->7|35->7|35->7|57->29|57->29|57->29|58->30|58->30|58->30|59->31|59->31|59->31|60->32|60->32|60->32|61->33|61->33|61->33|62->34|62->34|62->34|63->35|63->35|63->35|64->36|64->36|64->36|65->37|65->37|65->37|66->38|66->38|66->38|67->39|67->39|67->39|68->40|68->40|68->40|69->41|69->41|69->41|70->42|70->42|70->42|71->43|71->43|71->43|73->45|73->45|73->45|75->47|81->53|81->53|81->53
+                    -- GENERATED --
+                */
+            

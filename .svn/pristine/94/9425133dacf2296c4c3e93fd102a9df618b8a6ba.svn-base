@@ -1,0 +1,96 @@
+
+package views.html.curso
+
+import play.templates._
+import play.templates.TemplateMagic._
+
+import play.api.templates._
+import play.api.templates.PlayMagic._
+import models._
+import controllers._
+import java.lang._
+import java.util._
+import scala.collection.JavaConversions._
+import scala.collection.JavaConverters._
+import play.api.i18n._
+import play.core.j.PlayMagicForJava._
+import play.mvc._
+import play.data._
+import play.api.data.Field
+import play.mvc.Http.Context.Implicit._
+import views.html._
+/**/
+object create_curso extends BaseScalaTemplate[play.api.templates.Html,Format[play.api.templates.Html]](play.api.templates.HtmlFormat) with play.api.templates.Template1[Form[Curso],play.api.templates.Html] {
+
+    /**/
+    def apply/*1.2*/(formulario: Form[Curso]):play.api.templates.Html = {
+        _display_ {import helper._
+
+implicit def /*5.2*/implicitFieldConstructor/*5.26*/ = {{ FieldConstructor(views.html.include.constructor_field_input.render) }};
+Seq[Any](format.raw/*1.27*/("""
+
+"""),format.raw/*4.1*/("""
+"""),format.raw/*5.99*/("""
+
+"""),_display_(Seq[Any](/*7.2*/main("Aula Virtual")/*7.22*/ {_display_(Seq[Any](format.raw/*7.24*/("""
+
+<h2> Nuevo Profesor  </h2>
+
+"""),_display_(Seq[Any](/*11.2*/form(routes.ProfesorController.save_curso())/*11.46*/ {_display_(Seq[Any](format.raw/*11.48*/("""
+	<fieldset>
+		"""),_display_(Seq[Any](/*13.4*/inputText(formulario("name"),'_showConstraints -> false,'_label -> "Asignatura:"))),format.raw/*13.85*/("""
+		"""),_display_(Seq[Any](/*14.4*/select(formulario("ciclo"), 
+		options = options(
+			"1"->"I",
+			"2"->"II",
+			"3"->"III",
+			"4"->"IV",
+			"5"->"V",
+			"6"->"VI",
+			"7"->"VII",
+			"8"->"VIII",
+			"9"->"IX",
+			"10"->"X",
+			"0"->"0"
+			)
+		,'_showConstraints -> false,'_label -> "Ciclo:"		
+		))),format.raw/*29.4*/("""
+		"""),_display_(Seq[Any](/*30.4*/select(formulario("creditos"), 
+		options = options(
+			"2"->"2",
+			"3"->"3",
+			"4"->"4"
+			)
+		,'_showConstraints -> false, '_label -> "Creditos:"))),format.raw/*36.55*/("""
+		"""),_display_(Seq[Any](/*37.4*/select(formulario("grupo"),options = options(
+			"1"->"1",
+			"2"->"2",
+			"3"->"3",
+			"4"->"4"
+			)
+		,'_showConstraints -> false, '_label -> "Grupo:"))),format.raw/*43.52*/("""
+	</fieldset>
+    <input type="submit" value="Crear Curso">
+	<a href=""""),_display_(Seq[Any](/*46.12*/routes/*46.18*/.ProfesorController.inicio_profesor())),format.raw/*46.55*/(""""> <input type="button" value="Cancelar"> </a>
+""")))})),format.raw/*47.2*/("""
+    
+""")))})))}
+    }
+    
+    def render(formulario:Form[Curso]): play.api.templates.Html = apply(formulario)
+    
+    def f:((Form[Curso]) => play.api.templates.Html) = (formulario) => apply(formulario)
+    
+    def ref: this.type = this
+
+}
+                /*
+                    -- GENERATED --
+                    DATE: Fri Nov 22 22:48:29 COT 2013
+                    SOURCE: C:/wwww/tuto/branches/HERNAN/app/views/curso/create_curso.scala.html
+                    HASH: de2ece3336156801a17d06dc0c76ebd27d4ac4af
+                    MATRIX: 741->1|852->51|884->75|989->26|1019->48|1048->148|1087->153|1115->173|1154->175|1224->210|1277->254|1317->256|1370->274|1473->355|1513->360|1813->639|1853->644|2031->800|2071->805|2252->964|2362->1038|2377->1044|2436->1081|2516->1130
+                    LINES: 26->1|29->5|29->5|30->1|32->4|33->5|35->7|35->7|35->7|39->11|39->11|39->11|41->13|41->13|42->14|57->29|58->30|64->36|65->37|71->43|74->46|74->46|74->46|75->47
+                    -- GENERATED --
+                */
+            

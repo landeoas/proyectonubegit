@@ -1,0 +1,67 @@
+@if(session.get("user") == null) {
+	<a href="@routes.Home.login"><button class= "btn"> Ingreso </button></a>
+} else{
+		@if(session.get("user")== "Admin"){
+		<div class="btn-group" data-toggle="buttons-radio">
+		  
+		  	<a href="@routes.Administrador.index"> @if(request.path == "/admin/index"){<button class= "btn active"}
+		  		<button class= "btn"> Inicio </button></a>
+		  	<br>
+
+		    <a href="@routes.AlumnoController.listaAlu()"> @if(request.path == "/alumno/listaAlu"){<button class= "btn active"}
+		  		<button class= "btn"> Gestion de Alumnos </button></a>
+		  	<br>
+
+		    <a href="@routes.Administrador.publicar()">(@if(request.path == "/admin/publicar"){<button class= "btn active"} 
+		    	<button class= "btn"> Publicar Noticia </button></a>
+		    <br>
+
+		    <a href="@routes.ProfesorController.index()">(@if(request.path == "/profesor/index"){<button class= "btn active"} 
+		    	<button class= "btn"> Gestionar Profesores</button></a>
+		    <br>
+
+		    <a href="@routes.Home.salir"><button class= "btn">  Salir </button></a>
+
+		 </div>
+		}else{
+		@if(session.get("tipoU")== "Alumno"){
+		<div class="btn-group" data-toggle="buttons-radio">
+		  
+		  	<a href="@routes.Home.inicio_alumno()"> @if(request.path == "/home/InicioAlumno"){<button class= "btn active"}
+		  		<button class= "btn"> Inicio </button></a>
+		  	<br>
+		  	
+		  	<a href="@routes.AlumnoController.lista_cursos()">(@if(request.path == "/curso"){<button class= "btn active"} 
+		    	<button class= "btn"> Grupos </button></a>
+		    <br>
+
+		    <a href="@routes.AlumnoController.editar_perfil()"> @if(request.path == "/home/perfil"){<button class= "btn active"}
+		  		<button class= "btn"> Editar Perfil  </button></a>
+		  	<br>
+
+		    <a href="@routes.AlumnoController.editar_password()">(@if(request.path == "/alumno/password/"){<button class= "btn active"} 
+		    	<button class= "btn"> Editar Password </button></a>
+		    <br>
+
+		    <a href="@routes.Home.salir"><button class= "btn">  Salir </button></a>
+
+		</div>
+		}else{
+			@if(session.get("tipoU")== "Profesor"){
+				<div class="btn-group" data-toggle="buttons-radio">
+					<a href="@routes.ProfesorController.inicio_profesor()">@if(request.path == "/profesor/InicioProfesor"){<button class= "btn active"}
+						<button class="btn">Inicio</button>
+					</a><br>
+					<a href="@routes.ProfesorController.create_curso()">@if(request.path == "/profesor/CrearCurso"){<button class= "btn active"}
+						<button class="btn">Crear Nuevo Curso</button>
+					</a><br>
+					<a href="@routes.Home.salir()"><button class="btn"> Salir </button></a>
+				</div>
+			}
+		}
+	}
+}
+
+
+
+

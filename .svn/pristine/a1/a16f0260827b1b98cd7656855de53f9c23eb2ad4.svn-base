@@ -1,0 +1,74 @@
+
+package views.html.home
+
+import play.templates._
+import play.templates.TemplateMagic._
+
+import play.api.templates._
+import play.api.templates.PlayMagic._
+import models._
+import controllers._
+import java.lang._
+import java.util._
+import scala.collection.JavaConversions._
+import scala.collection.JavaConverters._
+import play.api.i18n._
+import play.core.j.PlayMagicForJava._
+import play.mvc._
+import play.data._
+import play.api.data.Field
+import play.mvc.Http.Context.Implicit._
+import views.html._
+/**/
+object acerca_de extends BaseScalaTemplate[play.api.templates.Html,Format[play.api.templates.Html]](play.api.templates.HtmlFormat) with play.api.templates.Template1[List[Noticia],play.api.templates.Html] {
+
+    /**/
+    def apply/*1.2*/(noticias: List[Noticia]):play.api.templates.Html = {
+        _display_ {
+
+Seq[Any](format.raw/*1.27*/("""
+
+"""),_display_(Seq[Any](/*3.2*/main("AULA VIRTUAL FISI")/*3.27*/ {_display_(Seq[Any](format.raw/*3.29*/("""
+
+<h2 class="text-center"> <strong>NOTICIAS</strong> </h2>
+
+<ul class="thumbnails" >
+    """),_display_(Seq[Any](/*8.6*/for(noticia <- noticias) yield /*8.30*/ {_display_(Seq[Any](format.raw/*8.32*/("""
+              <li class="span8">
+                <div class="thumbnail">
+                  <img src="""),_display_(Seq[Any](/*11.29*/routes/*11.35*/.Assets.at("public","images/"+noticia.imagen))),format.raw/*11.80*/(""" alt="">
+                  <div class="caption">
+                    <h2>"""),_display_(Seq[Any](/*13.26*/noticia/*13.33*/.titulo)),format.raw/*13.40*/("""</h2>
+                    <h3>Dirigido a la """),_display_(Seq[Any](/*14.40*/noticia/*14.47*/.escuela)),format.raw/*14.55*/("""</h3><h4>Fecha de Publicacion:  """),_display_(Seq[Any](/*14.88*/noticia/*14.95*/.created.format("dd-MM-yyyy"))),format.raw/*14.124*/("""</h4>
+                    <p>"""),_display_(Seq[Any](/*15.25*/noticia/*15.32*/.contenido)),format.raw/*15.42*/("""</p>
+                  </div>
+                </div>
+              </li>
+    """)))})),format.raw/*19.6*/("""
+</ul>
+
+<p class="text-center">
+<h3>Visite http://sistemas.edu.pe</h3>
+</p>
+
+""")))})),format.raw/*26.2*/("""
+"""))}
+    }
+    
+    def render(noticias:List[Noticia]): play.api.templates.Html = apply(noticias)
+    
+    def f:((List[Noticia]) => play.api.templates.Html) = (noticias) => apply(noticias)
+    
+    def ref: this.type = this
+
+}
+                /*
+                    -- GENERATED --
+                    DATE: Sun Nov 24 13:12:28 COT 2013
+                    SOURCE: C:/wwww/tuto/branches/HERNAN/app/views/home/acerca_de.scala.html
+                    HASH: 0983b34bb701e779e5683283065e5ef47f769d1d
+                    MATRIX: 739->1|841->26|878->29|911->54|950->56|1074->146|1113->170|1152->172|1290->274|1305->280|1372->325|1482->399|1498->406|1527->413|1608->458|1624->465|1654->473|1723->506|1739->513|1791->542|1857->572|1873->579|1905->589|2014->667|2123->745
+                    LINES: 26->1|29->1|31->3|31->3|31->3|36->8|36->8|36->8|39->11|39->11|39->11|41->13|41->13|41->13|42->14|42->14|42->14|42->14|42->14|42->14|43->15|43->15|43->15|47->19|54->26
+                    -- GENERATED --
+                */
+            

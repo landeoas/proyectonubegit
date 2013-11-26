@@ -1,0 +1,57 @@
+@(lista: List[Alumno])
+
+@import helper._
+
+
+@main("Gestion de Alumnos") {
+    
+<h2> <image src="@routes.Assets.at("/public/images","menu.png")"> Lista de Alumnos </h2>
+
+@if(flash.containsKey("success")) {
+	<h3 style="color: green">
+		<image src="@routes.Assets.at("/public/images","ok.gif")">
+		@flash.get("success")
+	</h3>
+} 
+
+<table class="table table-bordered">
+	<tr >
+		<th>Id</th>
+		<th>Codigo</th>
+		<th>Nombres</th>
+		<th>Apellidos</th>
+		<th>fecha nac.</th>
+		<th>Escuela</th>
+		<th>User</th>
+		<th>Password</th>
+		<th>Email</th>
+		<th>creado</th>
+		<th>modificado</th>
+	</tr>
+
+	@for(alumno <- lista) {
+	<tr >
+		<td>@alumno.id</td>
+		<td>@alumno.codigo</td>
+		<td>@alumno.nombres</td>
+		<td>@alumno.apellidos</td>
+		<td>@alumno.fecha.format("dd/MM/yyyy")</td>
+		<td>@alumno.escuela</td>
+		<td>@alumno.user</td>
+		<td>@alumno.password</td>
+		<td>@alumno.email</td>
+		<td>@alumno.created.format("dd/MM/yyyy")</td>
+		<td>@alumno.updated.format("dd/MM/yyyy")</td>
+		<td><a href="@routes.AlumnoController.edit_perfil(alumno.id)"> <input type="button" value="Editar"> </a></td>
+		<td>
+			@form(routes.AlumnoController.delete(alumno.id)) {
+				<input type="submit" value="Eliminar">
+			}
+		</td>
+		
+	</tr>
+	}
+</table>
+
+<a href="@routes.AlumnoController.buscar()"> <input type="button" value="Buscar"> </a>
+}
